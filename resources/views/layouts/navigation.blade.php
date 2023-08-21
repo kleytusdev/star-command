@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-nav-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
@@ -98,6 +98,8 @@
         </div>
     </div>
 </nav>
-<div style="position:fixed;width:50px; height:50px; border: 1px solid black; right: 1%; bottom: 1%;">
-    Hola Mundo
-</div>
+<div class="w-16 h-16 p-2 fixed bottom-4 right-4 rounded-full" style="background: #1450A3;" id="prueba">
+    <div class="w-full h-full rounded-full " style="background: #FFC436;border: 3px solid white;">
+        <img src="{!! asset('Img/colegio.png') !!}" />
+    </div>
+</div>  

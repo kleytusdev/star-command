@@ -11,6 +11,13 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <img class="w-10" src="{!! asset('img/colegio.png') !!}" />
+                <script type="module">
+                    $(document).ready(function(){
+                        $("h1").css('color', 'red');
+                      $("div").css({ 'color': 'blue', 'font-size': '18px' });
+                    });
+                </script>
             </div>
         </div>
     </div>

@@ -2,6 +2,23 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    daisyui: {
+        themes: [
+            {
+                mytheme: {
+                    "primary": "#f1765b",
+                    "secondary": "#f05d9e",
+                    "accent": "#4e4b5f",
+                    "neutral": "#2f2b43",
+                    "base-100": "#2a263e",
+                    "info": "#3abff8",
+                    "success": "#36d399",
+                    "warning": "#fbbd23",
+                    "error": "#f87272",
+                },
+            },
+        ],
+    },
     darkMode: 'class',
 
     content: [
@@ -28,5 +45,5 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [require('@tailwindcss/forms'), require("daisyui")],
 }

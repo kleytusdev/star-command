@@ -30,19 +30,15 @@
         x-on:resize.window="handleWindowResize"
         x-cloak
     >
-        <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200">
+        <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200 flex flex-row">
             <!-- Sidebar -->
-            <x-sidebar.sidebar />
+            <div class="flex flex-2">
+                <x-sidebar.sidebar />
+            </div>
 
             <!-- Page Wrapper -->
             <div
-                class="flex flex-col min-h-screen"
-                :class="{
-                    'lg:ml-64': isSidebarOpen,
-                    'md:ml-24': !isSidebarOpen,
-                    // 'sm:ml-28': !isSidebarOpen
-                }"
-                style="transition-property: margin; transition-duration: 150ms;"
+                class="flex flex-1 flex-col min-h-screen"
             >
 
                 <!-- Navbar -->

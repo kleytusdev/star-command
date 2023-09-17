@@ -1,49 +1,105 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <!-- <x-auth-session-status class="mb-4" :status="session('status')" /> -->
-    <div>
-        <img class="w-[40vw]" src="{!! asset('svg/saly.svg') !!}" />
-    </div>
-    <div>
-        <h1 class="text-white font-bold text-4xl">Bienvenido de Vuelta!</h1>
+    <x-auth-card>
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
+            <div class="grid gap-6">
+                <!-- Email Address -->
+                <div class="space-y-2">
+                    <x-form.label
+                        for="email"
+                        :value="__('Email')"
+                    />
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-heroicon-o-mail aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                        <x-form.input
+                            withicon
+                            id="email"
+                            class="block w-full"
+                            type="email"
+                            name="email"
+                            :value="old('email')"
+                            placeholder="{{ __('Email') }}"
+                            required
+                            autofocus
+                        />
+                    </x-form.input-with-icon-wrapper>
+                </div>
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
+                <!-- Password -->
+                <div class="space-y-2">
+                    <x-form.label
+                        for="password"
+                        :value="__('Password')"
+                    />
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-heroicon-o-lock-closed aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
 
-            <div class="flex flex-col gap-5 items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="text-sm text-gray-200 hover:text-gray-400 rounded-md focus:outline-none" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
+                        <x-form.input
+                            withicon
+                            id="password"
+                            class="block w-full"
+                            type="password"
+                            name="password"
+                            required
+                            autocomplete="current-password"
+                            placeholder="{{ __('Password') }}"
+                        />
+                    </x-form.input-with-icon-wrapper>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="flex items-center justify-between">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input
+                            id="remember_me"
+                            type="checkbox"
+                            class="text-purple-500 border-gray-300 rounded focus:border-purple-300 focus:ring focus:ring-purple-500 dark:border-gray-600 dark:bg-dark-eval-1 dark:focus:ring-offset-dark-eval-1"
+                            name="remember"
+                        >
+
+                        <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
+                            {{ __('Remember me') }}
+                        </span>
+                    </label>
+
+                    @if (Route::has('password.request'))
+                        <a class="text-sm text-blue-500 hover:underline" href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                    @endif
+                </div>
+
+                <div>
+                    <x-button class="justify-center w-full gap-2">
+                        <x-heroicon-o-login class="w-6 h-6" aria-hidden="true" />
+
+                        <span>{{ __('Log in') }}</span>
+                    </x-button>
+                </div>
+
+                @if (Route::has('register'))
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        {{ __('Don’t have an account?') }}
+                        <a href="{{ route('register') }}" class="text-blue-500 hover:underline">
+                            {{ __('Register') }}
+                        </a>
+                    </p>
                 @endif
-                <x-primary-button class="w-full rounded-full">Inicia Sesión</x-primary-button>
             </div>
         </form>
-    </div>
+    </x-auth-card>
 </x-guest-layout>

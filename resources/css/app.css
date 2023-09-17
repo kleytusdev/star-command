@@ -1,11 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "perfect-scrollbar/css/perfect-scrollbar.css";
+@import "tailwindcss/utilities";
 
-.gradient-blue-x {
-    background-image: linear-gradient(to right, #92e2ff, #1dbef9);
-}
-
-.gradient-blue-y {
-    background-image: linear-gradient(to bottom, #92e2ff, #1dbef9);
+.dark .ps__rail-y,
+.dark .ps__rail-x {
+    background-color: transparent !important;
 }

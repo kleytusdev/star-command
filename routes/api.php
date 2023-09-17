@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,5 @@ Route::get('category/{id}', [CategoryController::class, 'getCategory']);
 Route::post('category', [CategoryController::class, 'store']);
 Route::put('category/{id}', [CategoryController::class, 'update']);
 Route::delete('category/{id}', [CategoryController::class, 'destroy']);
+
+Route::get('sales', [SaleController::class, 'getSales']);

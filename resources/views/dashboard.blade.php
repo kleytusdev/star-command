@@ -1,24 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Inicio') }}
-        </h2>
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <h2 class="text-xl font-semibold leading-tight">
+                {{ __('Dashboard') }}
+            </h2>
+        </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-                <img class="w-10" src="{!! asset('img/colegio.png') !!}" />
-                <script type="module">
-                    $(document).ready(function(){
-                        $("h1").css('color', 'red');
-                      $("div").css({ 'color': 'blue', 'font-size': '18px' });
-                    });
-                </script>
-            </div>
-        </div>
+    <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        {{ __("You're logged in!")  }}
     </div>
 </x-app-layout>

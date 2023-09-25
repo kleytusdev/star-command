@@ -7,3 +7,7 @@
 .dark .ps__rail-x {
     background-color: transparent !important;
 }
+
+.gradient-right {
+    background-image: linear-gradient(to right, #f1765b, #f05d9e);
+}

@@ -23,14 +23,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-nunito antialiased">
     <div
         x-data="mainState"
         :class="{ dark: isDarkMode }"
         x-on:resize.window="handleWindowResize"
         x-cloak
     >
-        <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200 flex flex-row">
+        <div class="min-h-screen text-gray-900 duration-500 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200 flex flex-row">
             <!-- Sidebar -->
             <div class="flex flex-2">
                 <x-sidebar.sidebar />
@@ -45,14 +45,14 @@
                 <x-navbar />
 
                 <!-- Page Heading -->
-                <header>
+                {{-- <header>
                     <div class="p-4 sm:p-6">
                         {{ $header }}
                     </div>
-                </header>
+                </header> --}}
 
                 <!-- Page Content -->
-                <main class="px-4 sm:px-6 flex-1">
+                <main class="py-4 px-4 sm:px-6 flex-1">
                     {{ $slot }}
                 </main>
             </div>

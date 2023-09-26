@@ -1,7 +1,10 @@
 <nav
     aria-label="secondary"
-    class="top-0 z-10 flex items-center justify-between px-4 py-4 sm:px-6 duration-500 bg-white dark:bg-dark-eval-0"
+    class="top-0 z-10 flex items-center justify-between px-4 py-4 sm:px-6 duration-500 bg-gray-100 dark:bg-dark-eval-0"
 >
+    <h2 class="text-xl font-semibold leading-tight">
+        {{ __('Dashboard') }}
+    </h2>
     <div class="flex items-center gap-3">
         <x-button
             type="button"

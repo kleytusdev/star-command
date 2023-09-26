@@ -6,14 +6,14 @@ module.exports = {
         themes: [
             {
                 mytheme: {
-                    "primary": "#f1765b",
-                    "secondary": "#f05d9e",
-                    "accent": "#4e4b5f",
+                    "primary": "#847efa",
+                    "secondary": "#ff8f6b",
+                    "accent": "#6a6982",
                     "neutral": "#2f2b43",
                     "base-100": "#2a263e",
                     "info": "#3abff8",
-                    "success": "#36d399",
-                    "warning": "#fbbd23",
+                    "success": "#d1f7ea",
+                    "warning": "#fbd8d8",
                     "error": "#f87272",
                 },
             },
@@ -32,15 +32,20 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                nunito: ['Nunito']
             },
 
             colors: {
                 dark: {
-                    'eval-0': '#2a263e',
-                    'eval-1': '#2f2b43',
-                    'eval-2': '#2f2b43',
+                    'eval-0': '#19191d',
+                    'eval-1': '#21202a',
+                    'eval-2': '#21202a',
                     'eval-3': '#4e4b5f',
                 },
+                p: {
+                    'green': '#1ad598',
+                    'red': '#ec5255'
+                }
             },
         },
     },

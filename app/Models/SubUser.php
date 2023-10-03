@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class SubUser extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
+    public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 
-    protected $fillable = ['name'];
+  protected $fillable = [
+    'user_id',
+    'created_by_user_id',
+  ];
 }

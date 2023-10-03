@@ -12,15 +12,24 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    public function person()
+    {
+      return $this->belongsTo(Person::class);
+    }
+
+    public function subUser()
+    {
+      return $this->hasOne(SubUser::class);
+    }
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+      'email',
+      'password',
+      'photo_uri',
+      'active',
+      'email_verified_at',
+      'two_factor_confirmed_at',
+      'person_id',
     ];
 
     /**

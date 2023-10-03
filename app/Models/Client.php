@@ -6,15 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Client extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    public function products()
+    public function clientable()
     {
-        return $this->hasMany(Product::class);
+        return $this->morphTo();
     }
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'id',
+        'clientable_type',
+        'clientable_id',
+    ];
 }

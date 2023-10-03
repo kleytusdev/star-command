@@ -6,15 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class SaleDetail extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    public function products()
+    public function sale()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Sale::class);
     }
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'quantity',
+        'unit_price',
+        'total',
+        'sale_id',
+    ];
 }

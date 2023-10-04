@@ -17,9 +17,9 @@ class User extends Authenticatable
       return $this->belongsTo(Person::class);
     }
 
-    public function subUser()
+    public function subuser()
     {
-      return $this->hasOne(SubUser::class);
+      return $this->hasOne(Subuser::class);
     }
 
     protected $fillable = [

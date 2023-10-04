@@ -12,24 +12,24 @@
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
-        href="{{ route('profile.edit') }}"
-        :isActive="request()->routeIs('profile.edit')"
+        href="{{ route('categories.index') }}"
+        :isActive="request()->routeIs('categories.index')"
     >
         <x-slot name="icon">
             <x-icons.widget class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
-        href="{{ route('profile.edit') }}"
-        :isActive="request()->routeIs('profile.edit')"
+        href="{{ route('sales.index') }}"
+        :isActive="request()->routeIs('sales.index')"
     >
         <x-slot name="icon">
             <x-icons.money-bag class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
-        href="{{ route('profile.edit') }}"
-        :isActive="request()->routeIs('profile.edit')"
+        href="{{ route('subusers.index') }}"
+        :isActive="request()->routeIs('subusers.index')"
     >
         <x-slot name="icon">
             <x-icons.users-group-two class="flex-shrink-0 w-6 h-6" aria-hidden="true" />

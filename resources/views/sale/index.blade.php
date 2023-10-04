@@ -1,4 +1,6 @@
 <x-app-layout>
+    <!-- Navbar -->
+    <x-navbar title="Ventas" />
     <div class="flex-1 flex gap-5 h-[100%]">
         <div class="flex flex-1 flex-row justify-between gap-5 h-[25%]">
             <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-7">

@@ -40,10 +40,6 @@
             <div
                 class="flex flex-1 flex-col min-h-screen"
             >
-
-                <!-- Navbar -->
-                <x-navbar />
-
                 <!-- Page Heading -->
                 {{-- <header>
                     <div class="p-4 sm:p-6">

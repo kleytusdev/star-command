@@ -20,6 +20,14 @@
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
+        href="{{ route('products.index') }}"
+        :isActive="request()->routeIs('products.index')"
+    >
+        <x-slot name="icon">
+            <x-icons.box class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+    <x-sidebar.link
         href="{{ route('sales.index') }}"
         :isActive="request()->routeIs('sales.index')"
     >

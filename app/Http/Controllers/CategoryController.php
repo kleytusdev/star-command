@@ -12,22 +12,6 @@ class CategoryController extends Controller
         return view('category.index');
     }
 
-    public function getCategories()
-    {
-        return response()->json(Category::all(), 200);
-    }
-
-    public function getCategory($id)
-    {
-        $category = Category::find($id);
-
-        if (is_null($category)) {
-            return response()->json(['message' => 'Registro no encontrado.'], 404);
-        }
-
-        return response()->json($category, 200);
-    }
-
     public function store(Request $request)
     {
         $category = Category::create($request->all());

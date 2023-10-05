@@ -40,7 +40,7 @@ module.exports = {
                     'eval-0': '#19191d',
                     'eval-1': '#21202a',
                     'eval-2': '#21202a',
-                    'eval-3': '#4e4b5f',
+                    'eval-3': '#3f3d50',
                 },
                 p: {
                     'green': '#1ad598',

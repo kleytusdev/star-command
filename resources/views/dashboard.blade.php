@@ -3,8 +3,8 @@
     <x-navbar title="Dashboard" />
     <div class="flex-1 flex gap-5 h-[90%] flex-row">
         <div class="flex-col flex flex-1 gap-5">
-            <div class="flex flex-1 flex-row justify-between gap-5 h-[25%]">
-                <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-7">
+            <div class="flex flex-2 flex-row justify-between gap-5 h-[25%]">
+                <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-5">
                     <div class="flex flex-[0.5] items-center space-x-4">
                         <div class="p-3 rounded-xl border-primary border">
                             <x-icons.dollar-minimalistic class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-7">
+                <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-5">
                     <div class="flex flex-[0.5] items-center space-x-4">
                         <div class="p-3 rounded-xl border-primary border">
                             <x-icons.graph-new-up class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-7">
+                <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-5">
                     <div class="flex flex-[0.5] items-center space-x-4">
                         <div class="p-3 rounded-xl border-primary border">
                             <x-icons.cube-plus class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
@@ -68,12 +68,20 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-1">
-                <p>Holaa</p>
+            <div class="flex flex-1 flex-row gap-5">
+                <div class="flex flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-1">
+                    <p>Estadísticas de ventas</p>
+                </div>
+                <div class="flex flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-1">
+                    <p>Estadísticas de entrada productos</p>
+                </div>
+            </div>
+            <div class="p-6 bg-white rounded-xl dark:bg-dark-eval-1">
+                <x:table-subusers />
             </div>
         </div>
         <div class="flex flex-[0.25] p-6 bg-white rounded-xl dark:bg-dark-eval-1">
-            <p>Holaa</p>
+            <p>Otros</p>
         </div>
     </div>
 </x-app-layout>

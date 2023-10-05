@@ -2,8 +2,8 @@
     <!-- Navbar -->
     <x-navbar title="Productos" />
     <div class="flex-1 flex flex-col gap-5 h-[90%]">
-        <!-- Open the modal using ID.showModal() method -->
-        <button class="btn bg-dark-eval-1 w-[15%]" onclick="my_modal_5.showModal()">Crear producto</button>
+        <!-- Open the modal -->
+        <button class="btn bg-dark-eval-1 w-[10%]" onclick="my_modal_5.showModal()">NUEVO</button>
         <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
                 <form method="post" action="{{ route('product.store') }}">

@@ -4,24 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Enums\CategoryStatusEnum;
+use App\Http\Requests\Category\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
+    }
+
+    public function store(CategoryStoreRequest $request)
+    {
+        Category::create([
+            'name' => $request->name,
+            'status' => CategoryStatusEnum::ACTIVE
+        ]);
+
         return view('category.index');
     }
 
-    public function store(Request $request)
-    {
-        $category = Category::create($request->all());
-
-        if (is_null($category)) {
-            return response()->json(['message' => 'Ocurrió un error inesperado al guardar la categoría.'], 404);
-        }
-
-        return response()->json($category, 200);
-    }
 
     public function update(Request $request, $id)
     {

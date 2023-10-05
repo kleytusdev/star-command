@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductStatusEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,13 +29,16 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'description',
-        'unit_price',
+        'price',
         'brand',
         'model',
         'status',
         'stock',
         'warehouse_id',
         'category_id'
+    ];
+
+    protected $casts = [
+        'status' => ProductStatusEnum::class
     ];
 }

@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
 
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::post('/product', [ProductController::class, 'store'])->name('product.store');

@@ -9,22 +9,34 @@ use App\Http\Requests\Category\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
+    public $categories;
+
+    public function __construct()
+    {
+        $this->categories = Category::all();;
+    }
+
     public function index()
     {
-        $categories = Category::all();
-        return view('category.index', compact('categories'));
+        return view('category.index', ['categories' => $this->categories]);
     }
 
     public function store(CategoryStoreRequest $request)
     {
+        // Guardar el archivo en el disco 'public' y obtener la ruta completa
+        if ($request->hasFile('uri_photo')) {
+            $path = $request->file('uri_photo')->store('public/categories');
+            $fullPath = asset(str_replace('public', 'storage', $path));
+        }
+
         Category::create([
             'name' => $request->name,
-            'status' => CategoryStatusEnum::ACTIVE
+            'status' => CategoryStatusEnum::ACTIVE,
+            'uri_photo' => $fullPath ?? null
         ]);
 
-        return view('category.index');
+        return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente');
     }
-
 
     public function update(Request $request, $id)
     {

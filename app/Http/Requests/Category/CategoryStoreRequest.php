@@ -24,7 +24,8 @@ class CategoryStoreRequest extends FormRequest
     {
         return [
             'name' => 'string|max:50|required',
-            'status' => 'string|max:50'
+            'status' => 'string|max:50',
+            'photo_uri' => 'image|nullable'
         ];
     }
 }

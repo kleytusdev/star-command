@@ -31,7 +31,7 @@
                 class="bg-white border-b dark:bg-dark-eval-1 dark:border-dark-eval-3 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th class="py-4">{{ $category->id }}</th>
                 <td>
-                    <img class="w-10 h-10 rounded-full" src="{{ $category->uri_photo }}">
+                    <img class="w-10 h-10 rounded-full object-cover" src={{ $category->uri_photo }}>
                 </td>
                 <td scope="row" class="flex items-center py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <div class="text-base font-semibold">{{ $category->name }}</div>

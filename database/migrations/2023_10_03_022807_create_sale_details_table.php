@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal('unit_price', 9, 2);
             $table->decimal('total', 9, 2);
             $table->foreignId('sale_id')->constrained('sales');
+            $table->foreignId('product_id')->constrained('products');
             $table->timestamps();
             $table->softDeletes();
         });

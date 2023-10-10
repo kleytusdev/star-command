@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subusers', function (Blueprint $table) {
+        Schema::create('guides', function (Blueprint $table) {
             $table->id();
+            $table->text('observation')->nullable();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('created_by_user_id')->constrained('users');
+            $table->foreignId('warehouse_id')->constrained('warehouses');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subusers');
+        Schema::dropIfExists('guides');
     }
 };

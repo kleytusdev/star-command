@@ -6,7 +6,7 @@
         <button class="btn bg-dark-eval-1 w-[10%]" onclick="my_modal_5.showModal()">NUEVO</button>
         <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
-                <form method="post" action="{{ route('category.store') }}">
+                <form enctype="multipart/form-data" method="post" action="{{ route('category.store') }}">
                     @csrf
                     <!-- Agrega tus campos de formulario aquí -->
                     <div class="grid gap-6">
@@ -14,7 +14,7 @@
                         <div class="space-y-2">
                             <x-form.label
                                 for="name"
-                                :value="__('Name')"
+                                :value="__('Nombre')"
                             />
 
                             <x-form.input-with-icon-wrapper>
@@ -34,6 +34,14 @@
                                     placeholder="{{ __('Name') }}"
                                 />
                             </x-form.input-with-icon-wrapper>
+                        </div>
+                        <!-- Foto -->
+                        <div class="space-y-2">
+                            <x-form.label
+                                for="uri_photo"
+                                :value="__('Foto')"
+                            />
+                            <input id="uri_photo" name="uri_photo" type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                         </div>
                     </div>
                     <div class="modal-action">

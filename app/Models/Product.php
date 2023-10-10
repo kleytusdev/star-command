@@ -12,11 +12,6 @@ class Product extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public function productPhotos()
-    {
-        return $this->hasMany(ProductPhoto::class);
-    }
-
     public function warehouse()
     {
         return $this->belongsTo(Warehouse::class);
@@ -32,8 +27,10 @@ class Product extends Model
         'price',
         'brand',
         'model',
-        'status',
         'stock',
+        'status',
+        'qr_code',
+        'uri_photo',
         'warehouse_id',
         'category_id'
     ];

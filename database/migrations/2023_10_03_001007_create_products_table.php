@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('model', 50);
             $table->string('status', 50);
             $table->integer('stock');
+            $table->string('uri_photo', 255);
             $table->string('qr_code', 255);
             $table->foreignId('warehouse_id')->constrained('warehouses');
             $table->foreignId('category_id')->constrained('categories');

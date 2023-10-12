@@ -35,7 +35,7 @@ class CategoryController extends Controller
             'uri_photo' => $fullPath ?? null
         ]);
 
-        return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente');
+        // return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente');
     }
 
     public function update(Request $request, $id)

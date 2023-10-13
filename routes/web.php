@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SubuserController;
-use App\Livewire\Category\Show;
-use App\Livewire\Category\Store;
+use App\Http\Controllers\ProfileController;
+use App\Livewire\Product\Show as ProductShow;
+use App\Livewire\Product\Store as ProductStore;
+use App\Livewire\Category\Show as CategoryShow;
+use App\Livewire\Category\Store as CategoryStore;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,19 +29,15 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-    Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+    Route::get('products', ProductShow::class)->name('products.index');
+    Route::get('categories', CategoryShow::class)->name('categories.index');
 
-    Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
-
-    Route::get('/subusers', [SubuserController::class, 'index'])->name('subusers.index');
-
-    Route::get('categories', Show::class)->name('categories.index');
-    Route::post('categories', [Store::class, 'store'])->name('categories.store');
+    Route::get('sales', [SaleController::class, 'index'])->name('sales.index');
+    Route::get('subusers', [SubuserController::class, 'index'])->name('subusers.index');
 });
 
 require __DIR__ . '/auth.php';

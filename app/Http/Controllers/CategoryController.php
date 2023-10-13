@@ -23,6 +23,7 @@ class CategoryController extends Controller
 
     public function store(CategoryStoreRequest $request)
     {
+        // dd($request->all());
         // Guardar el archivo en el disco 'public' y obtener la ruta completa
         if ($request->hasFile('uri_photo')) {
             $path = $request->file('uri_photo')->store('public/categories');

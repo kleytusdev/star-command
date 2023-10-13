@@ -21,7 +21,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'status',
-        'uri_photo'
+        'photo_uri'
     ];
 
     protected $casts = [

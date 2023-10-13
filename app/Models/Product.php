@@ -30,7 +30,7 @@ class Product extends Model
         'stock',
         'status',
         'qr_code',
-        'uri_photo',
+        'photo_uri',
         'warehouse_id',
         'category_id'
     ];

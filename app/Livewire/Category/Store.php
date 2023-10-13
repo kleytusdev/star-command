@@ -4,30 +4,44 @@ namespace App\Livewire\Category;
 
 use Livewire\Component;
 use App\Models\Category;
+use Livewire\WithFileUploads;
 use App\Enums\CategoryStatusEnum;
-use App\Http\Requests\Category\CategoryStoreRequest;
 
 class Store extends Component
 {
+    use WithFileUploads;
+
+    public $name, $photoUri;
+
     public function render()
     {
         return view('livewire.category.store');
     }
 
-    public function store(CategoryStoreRequest $request)
+    public function store()
     {
-        // Guardar el archivo en el disco 'public' y obtener la ruta completa
-        if ($request->hasFile('uri_photo')) {
-            $path = $request->file('uri_photo')->store('public/categories');
-            $fullPath = asset(str_replace('public', 'storage', $path));
-        }
 
-        Category::create([
-            'name' => $request->name,
-            'status' => CategoryStatusEnum::ACTIVE,
-            'uri_photo' => $fullPath ?? null
+        $this->validate([
+            'name' => ['required', 'string'],
+            'photoUri' => ['nullable', 'image'],
         ]);
 
-        // return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente');
+        $category = [
+            'name' => $this->name,
+            'status' => CategoryStatusEnum::ACTIVE,
+            'photo_uri' => $this->photoUri,
+        ];
+
+        // Guardar el archivo en el disco 'public' y obtener la ruta completa
+        if ($this->photoUri) {
+            $extension = $this->photoUri->extension();
+            $imageName = date('YmdHis') . '_' . rand(11111, 99999) . '.' . $extension;
+            $this->photoUri->storeAs('public/categories', $imageName);
+            $category['photo_uri'] = $imageName;
+        }
+
+        Category::create($category);
+
+        return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente');
     }
 }

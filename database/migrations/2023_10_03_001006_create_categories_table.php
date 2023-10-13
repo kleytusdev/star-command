@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('status', 50);
-            $table->string('uri_photo', 255)->nullable();
+            $table->string('photo_uri', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

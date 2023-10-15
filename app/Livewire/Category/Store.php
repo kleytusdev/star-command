@@ -20,7 +20,6 @@ class Store extends Component
 
     public function store()
     {
-
         $this->validate([
             'name' => ['required', 'string'],
             'photoUri' => ['nullable', 'image'],
@@ -31,7 +30,6 @@ class Store extends Component
             'status' => CategoryStatusEnum::ACTIVE,
             'photo_uri' => $this->photoUri,
         ];
-
         // Guardar el archivo en el disco 'public' y obtener la ruta completa
         if ($this->photoUri) {
             $extension = $this->photoUri->extension();

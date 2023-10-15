@@ -83,8 +83,8 @@
 
                 <!-- Foto -->
                 <div class="space-y-2">
-                    <x-form.label for="photo_uri" :value="__('Foto')" />
-                    <input wire:model="photo_uri" id="photo_uri" name="photo_uri" type="file"
+                    <x-form.label for="photoUri" :value="__('Foto')" />
+                    <input wire:model="photoUri" id="photoUri" name="photoUri" type="file"
                         class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                 </div>
 
@@ -95,12 +95,11 @@
                         class="form-control border-gray-400 rounded-md focus:border-gray-400
                         focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
                         dark:text-gray-300"
-                        name="category_id" wire:model="category_id">
-                        <option disabled selected>Seleccione una categoría</option>
+                        id="categoryId" name="categoryId" wire:model="categoryId">
+                        <option value="">Seleccione una categoría</option>
                         @if ($categories->count() > 0)
                             @foreach ($categories as $category)
-                                <option class="font-nunito" value="{{ $category->id }}">{{ $category->name }}
-                                </option>
+                                <option class="font-nunito" value="{{ $category->id }}">{{ $category->name }}</option>
                             @endForeach
                         @else
                             No Record Found
@@ -115,8 +114,8 @@
                         class="form-control border-gray-400 rounded-md focus:border-gray-400
                         focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
                         dark:text-gray-300"
-                        name="warehouse_id" wire:model="warehouse_id">
-                        <option selected>Seleccione un almacén</option>
+                        id="warehouseId" name="warehouseId" wire:model="warehouseId">
+                        <option value="" selected>Seleccione un almacén</option>
                         @if ($warehouses->count() > 0)
                             @foreach ($warehouses as $warehouse)
                                 <option value="{{ $warehouse->id }}">

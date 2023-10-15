@@ -10,7 +10,8 @@
                             <x-icons.dollar-minimalistic class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
                         </div>
                         <div class="flex flex-row gap-1">
-                            <x-icons.circle-arrow-down-right-filled class="flex-shrink-0 w-6 h-6 text-warning" aria-hidden="true" />
+                            <x-icons.circle-arrow-down-right-filled class="flex-shrink-0 w-6 h-6 text-warning"
+                                aria-hidden="true" />
                             <p class="text-p-red">-2,77 %</p>
                         </div>
                     </div>
@@ -80,8 +81,9 @@
                 <x:table-subusers />
             </div>
         </div>
-        <div class="flex flex-[0.25] p-6 bg-white rounded-xl dark:bg-dark-eval-1">
-            <p>Otros</p>
+        <div class="flex flex-[0.25] flex-col p-6 bg-white rounded-xl dark:bg-dark-eval-1 overflow-y-auto">
+            <h1 class="text-xl font-semibold leading-tight">Almacenes</h1>
+            @livewire('warehouse.show')
         </div>
     </div>
 </x-app-layout>

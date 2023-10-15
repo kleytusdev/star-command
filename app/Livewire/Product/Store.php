@@ -3,6 +3,7 @@
 namespace App\Livewire\Product;
 
 use App\Enums\CategoryStatusEnum;
+use App\Enums\ProductStatusEnum;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Product;
@@ -18,20 +19,9 @@ class Store extends Component
     public string $brand;
     public string $model;
     public int $stock;
-    public $photo_uri;
-    public int $category_id;
-    public int $warehouse_id;
-
-    protected $rules = [
-        'name' => ['required', 'string'],
-        'price' => ['required', 'regex:/^\d{1,7}(\.\d{1,2})?$/'],
-        'brand' => ['required', 'string'],
-        'model' => ['required', 'string'],
-        'stock' => ['required', 'integer'],
-        'photo_uri' => ['nullable', 'image'],
-        'category_id' => ['required', 'integer', 'exists:categories,id'],
-        'warehouse_id' => ['required', 'integer', 'exists:warehouses,id'],
-    ];
+    public $photoUri;
+    public int $categoryId;
+    public int $warehouseId;
 
     public function render()
     {
@@ -46,19 +36,39 @@ class Store extends Component
 
     public function store()
     {
-        // $this->validate;
-        $validatedData = $this->validate();
-        // Guardar el archivo en el disco 'public' y obtener la ruta completa
-        if ($this->photo_uri) {
-            $extension = $this->photo_uri->extension();
-            $imageName = date('YmdHis') . '_' . rand(11111, 99999) . '.' . $extension;
-            $this->photo_uri->storeAs('public/products', $imageName);
-            $validatedData['photo_uri'] = $imageName;
-        }
-        $validatedData['status'] = CategoryStatusEnum::ACTIVE;
-        $validatedData['qr_code'] = 1;
+        $this->validate([
+            'name' => ['required', 'string'],
+            'price' => ['required', 'regex:/^\d{1,7}(\.\d{1,2})?$/'],
+            'brand' => ['required', 'string'],
+            'model' => ['required', 'string'],
+            'stock' => ['required', 'integer'],
+            'photoUri' => ['nullable', 'image'],
+            'categoryId' => ['required', 'integer', 'exists:categories,id'],
+            'warehouseId' => ['required', 'integer', 'exists:warehouses,id'],
+        ]);
 
-        Product::create($validatedData);
+        $product = [
+            'name' => $this->name,
+            'price' => $this->price,
+            'brand' => $this->brand,
+            'model' => $this->model,
+            'stock' => $this->stock,
+            'photo_uri' => $this->photoUri,
+            'status' => ProductStatusEnum::ACTIVE,
+            'qr_code' => 1,
+            'category_id' => $this->categoryId,
+            'warehouse_id' => $this->warehouseId,
+        ];
+
+        // Guardar el archivo en el disco 'public' y obtener la ruta completa
+        if ($this->photoUri) {
+            $extension = $this->photoUri->extension();
+            $imageName = date('YmdHis') . '_' . rand(11111, 99999) . '.' . $extension;
+            $this->photoUri->storeAs('public/products', $imageName);
+            $product['photo_uri'] = $imageName;
+        }
+
+        Product::create($product);
 
         return redirect()->route('products.index')->with('success', 'Categoría creada exitosamente');
     }

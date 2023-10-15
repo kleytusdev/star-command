@@ -42,8 +42,7 @@
                     {{ $product->id }}
                 </th>
                 <td>
-                    <img class="w-10 h-10 rounded-full"
-                        src={{ $product->uri_photo }}>
+                    <img class="w-10 h-10 rounded-full" src={{ asset('storage/products/' . $product->photo_uri ) }}>
                 </td>
                 <td scope="row" class="flex items-center py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <div class="text-base font-semibold">{{ $product->name }}</div>

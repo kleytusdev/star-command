@@ -39,7 +39,7 @@ module.exports = {
                 dark: {
                     'eval-0': '#19191d',
                     'eval-1': '#21202a',
-                    'eval-2': '#21202a',
+                    'eval-2': '#272630',
                     'eval-3': '#3f3d50',
                 },
                 p: {

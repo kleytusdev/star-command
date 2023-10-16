@@ -12,15 +12,11 @@
                 </div>
                 <div class="mt-1 text-slate-800 dark:text-slate-200 whitespace-no-wrap">
                     <p class="whitespace-no-wrap truncate overflow-ellipsis overflow-hidden">
-                        {{ $warehouse->address }} asñdkjq{dkqñdkqwda
-                        skldañskljdñaskljd}asdlwhjdñjwdlkñdwqkjdwllñksadñkalsdjaskñldjasdlkñ
+                        {{ $warehouse->address }}
                     </p>
                 </div>
-
             </div>
-            <button
-                class="pointer-events-auto ml-4 flex-none rounded-md px-2 py-[0.3125rem] font-medium text-slate-700 dark:text-slate-200 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 dark:hover:bg-dark-eval-3">
-                Editar</button>
+            @livewire('warehouse.edit', ['warehouse' => $warehouse])
         </div>
     @endforeach
 </div>

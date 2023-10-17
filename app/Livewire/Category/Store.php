@@ -5,7 +5,6 @@ namespace App\Livewire\Category;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithFileUploads;
-use App\Enums\CategoryStatusEnum;
 
 class Store extends Component
 {
@@ -21,15 +20,15 @@ class Store extends Component
     public function store()
     {
         $this->validate([
-            'name' => ['required', 'string'],
-            'photoUri' => ['nullable', 'image', 'mimes:png,jpg,jpeg'],
+            'name' => ['required', 'string', 'min:4'],
+            'photoUri' => ['nullable', 'image'],
         ]);
 
         $category = [
             'name' => $this->name,
-            'status' => CategoryStatusEnum::ACTIVE,
             'photo_uri' => $this->photoUri,
         ];
+
         // Guardar el archivo en el disco 'public' y obtener la ruta completa
         if ($this->photoUri) {
             $extension = $this->photoUri->extension();

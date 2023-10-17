@@ -20,11 +20,6 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'status',
         'photo_uri'
-    ];
-
-    protected $casts = [
-        'status' => CategoryStatusEnum::class
     ];
 }

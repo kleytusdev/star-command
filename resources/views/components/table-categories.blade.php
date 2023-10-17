@@ -18,9 +18,6 @@
                 Fecha de Actualización
             </th>
             <th scope="col" class="pb-3">
-                Estado
-            </th>
-            <th scope="col" class="pb-3">
                 Acción
             </th>
         </tr>
@@ -33,20 +30,15 @@
                 <td>
                     <img class="w-10 h-10 rounded-full object-cover" src="{{ asset('storage/categories/' . $category->photo_uri ) }}">
                 </td>
-                <td scope="row" class="flex items-center py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                <td class="py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <div class="text-base font-semibold">{{ $category->name }}</div>
                 </td>
                 <td class="py-4">{{ $category->created_at }}</td>
                 <td class="py-4">{{ $category->updated_at }}</td>
-                <td class="py-4">
-                    <div class="flex items-center">
-                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> {{ $category->status }}
-                    </div>
-                </td>
-                <td class="py-4">
+                <td class="flex flex-col py-4 gap-2">
                     <!-- Modal toggle -->
-                    <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                   @livewire('category.edit', ['category' => $category])
+                   @livewire('category.destroy', ['category' => $category])
                 </td>
             </tr>
         @endforeach

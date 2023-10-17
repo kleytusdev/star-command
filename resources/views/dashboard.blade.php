@@ -81,8 +81,9 @@
                 <x:table-subusers />
             </div>
         </div>
-        <div class="flex flex-[0.25] flex-col p-6 bg-white rounded-xl dark:bg-dark-eval-1 overflow-y-auto">
-            <h1 class="text-xl font-semibold leading-tight">Almacenes</h1>
+        <div class="flex flex-[0.20] flex-col p-6 bg-white rounded-xl dark:bg-dark-eval-1 overflow-y-auto">
+            @livewire('user.profile-card')
+            <h1 class="text-xl font-semibold leading-tight mt-10">Almacenes</h1>
             @livewire('warehouse.show')
         </div>
     </div>

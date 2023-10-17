@@ -70,6 +70,6 @@ class Store extends Component
 
         Product::create($product);
 
-        return redirect()->route('products.index')->with('success', 'Categoría creada exitosamente');
+        return redirect()->route('products.index')->with('success', 'Producto creado exitosamente');
     }
 }

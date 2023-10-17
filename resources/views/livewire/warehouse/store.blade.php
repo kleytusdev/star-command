@@ -1,7 +1,6 @@
-@props(['warehouse'])
 <div>
-    <x:modal :name="'editWarehouse-' . $warehouse->id" maxWidth="sm" x-show="modalOpen">
-        <form wire:submit.prevent="edit">
+    <x:modal name="storeWarehouse" maxWidth="sm" x-show="modalOpen">
+        <form wire:submit.prevent="store">
             @csrf
             <!-- Campos del formulario -->
             <div class="grid gap-6">
@@ -41,7 +40,4 @@
             </div>
         </form>
     </x:modal>
-    <button
-        class="pointer-events-auto ml-4 flex-none rounded-md px-2 py-[0.3125rem] font-medium text-slate-700 dark:text-slate-200 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 dark:hover:bg-dark-eval-3"
-        x-on:click="$dispatch('open-modal', { name: 'editWarehouse-{{ $warehouse->id }}' })">Editar</button>
 </div>

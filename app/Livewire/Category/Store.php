@@ -22,7 +22,7 @@ class Store extends Component
     {
         $this->validate([
             'name' => ['required', 'string'],
-            'photoUri' => ['nullable', 'image'],
+            'photoUri' => ['nullable', 'image', 'mimes:png,jpg,jpeg'],
         ]);
 
         $category = [

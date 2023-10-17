@@ -1,7 +1,7 @@
 @props(['warehouse'])
 <div>
     <x:modal :name="'editWarehouse-' . $warehouse->id" maxWidth="sm" x-show="modalOpen">
-        <form wire:submit.prevent="edit">
+        <form wire:submit.prevent="update">
             @csrf
             <!-- Campos del formulario -->
             <div class="grid gap-6">

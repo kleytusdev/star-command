@@ -27,8 +27,6 @@ class Store extends Component
             'address' => $this->address,
         ];
 
-        // dd($warehouse);
-
         Warehouse::create($warehouse);
 
         return redirect()->route('dashboard')->with('success', 'Almacén creado exitosamente');

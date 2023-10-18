@@ -1,5 +1,5 @@
 <div class="flex flex-col">
-    <div class="relative flex-col items-center rounded-[10px] bg-white dark:bg-dark-eval-1 dark:text-white">
+    <div class="relative flex-col items-center rounded-[10px] bg-white dark:bg-dark-eval-0 dark:text-white">
         <div class="relative flex h-32 w-full justify-center rounded-xl bg-cover" >
             <img src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png' class="absolute flex h-32 w-full justify-center rounded-xl bg-cover">
             <div class="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white dark:border-dark-eval-1 bg-pink-400 dark:!border-navy-700">

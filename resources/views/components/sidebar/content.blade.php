@@ -28,8 +28,8 @@
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
-        href="{{ route('warehouses.index') }}"
-        :isActive="request()->routeIs('warehouses.index')"
+        href="{{ route('sales.index') }}"
+        :isActive="request()->routeIs('sales.index')"
     >
         <x-slot name="icon">
             <x-icons.money-bag class="flex-shrink-0 w-6 h-6" aria-hidden="true" />

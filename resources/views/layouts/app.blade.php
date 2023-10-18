@@ -29,7 +29,7 @@
 <body class="font-nunito antialiased">
     <div x-on:resize.window="handleWindowResize" x-cloak>
         <div
-            class="min-h-screen text-gray-900 duration-500 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200 flex flex-row">
+            class="min-h-screen text-gray-900 duration-500 bg-gray-100 dark:bg-dark-eval-1 dark:text-gray-200 flex flex-row">
             <!-- Sidebar -->
             <div class="flex flex-2">
                 <x-sidebar.sidebar />

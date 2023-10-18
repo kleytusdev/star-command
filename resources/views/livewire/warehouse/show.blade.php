@@ -1,12 +1,12 @@
 <div class="flex flex-col rounded-lg text-[0.8125rem] leading-5 text-white shadow-black/5 max-h-[23vw] overflow-y-auto my-4 pr-2 gap-4">
     @if ($warehouses->isEmpty())
-        <div class="flex flex-1 justify-center self-center items-center p-4 bg-white dark:bg-dark-eval-2 rounded-lg">
+        <div class="flex flex-1 justify-center self-center items-center p-4 bg-white dark:bg-dark-eval-0 rounded-lg">
             <div class="flex flex-1 flex-col justify-center items-center self-center">
                 <div class="text-center text-slate-900 dark:text-slate-200 font-semibold">
                     Aún no tienes ningún almacén registrado en tu empresa.
                 </div>
                 <button
-                class="mt-4 self-center font-bold pointer-events-auto rounded-md px-2 py-[0.3125rem] text-slate-700 dark:text-primary shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 dark:hover:bg-dark-eval-3"
+                class="btn btn-ghost btn-sm border-1 border-gray-200 dark:border-dark-eval-1 normal-case mt-4 self-center text-slate-700 dark:text-primary shadow-sm"
                 x-on:click="$dispatch('open-modal', { name: 'storeWarehouse' })">Crear un nuevo almacén</button>
             </div>
             @livewire('warehouse.store')

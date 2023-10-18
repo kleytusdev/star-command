@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SubuserController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Sale\Index as SaleIndex;
 use App\Livewire\Product\Show as ProductShow;
 use App\Livewire\Category\Show as CategoryShow;
 use App\Livewire\Warehouse\Show as WarehouseShow;
@@ -35,8 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('products', ProductShow::class)->name('products.index');
     Route::get('categories', CategoryShow::class)->name('categories.index');
     Route::get('warehouses', WarehouseShow::class)->name('warehouses.index');
+    Route::get('sales', SaleIndex::class)->name('sales.index');
 
-    Route::get('sales', [SaleController::class, 'index'])->name('sales.index');
     Route::get('subusers', [SubuserController::class, 'index'])->name('subusers.index');
 });
 

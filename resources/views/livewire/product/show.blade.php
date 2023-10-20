@@ -1,10 +1,10 @@
-<div>
+<div class="flex flex-1 flex-col h-[100%]">
     <!-- Navbar -->
-    <x-navbar title="Productos"/>
-    <div class="flex-1 flex flex-col gap-5 h-[90%]">
-        @livewire('product.store')
-        <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-1 gap-7">
-            <x-table-products :products="$products" />
+    <x-navbar title="Productos" />
+    <div class="flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-0 overflow-y-auto">
+        <div class="mb-5">
+            @livewire('product.store')
         </div>
+        <x-table-products :products="$products" />
     </div>
 </div>

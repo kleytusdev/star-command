@@ -142,7 +142,7 @@
         </form> --}}
     </x:modal>
     <button
-        class="btn btn-ghost btn-sm border-1 border-gray-200 dark:border-dark-eval-1 normal-case mt-4 self-center text-slate-700 dark:text-primary shadow-sm"
+        class="btn btn-outline btn-primary btn-sm normal-case"
         x-on:click="$dispatch('open-modal', { name: 'storeSale' })"
     >
         Registrar una nueva venta

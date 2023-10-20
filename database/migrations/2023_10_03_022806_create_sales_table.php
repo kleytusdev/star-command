@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status', 50);
             $table->string('payment_method', 50);
             $table->foreignId('client_id')->constrained('clients');
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

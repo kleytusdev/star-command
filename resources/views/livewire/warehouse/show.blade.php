@@ -29,7 +29,7 @@
                     </p>
                 </div>
             </div>
-            <div class="flex flex-2 flex-col gap-2">
+            <div class="flex flex-2 flex-col gap-3">
                 @livewire('warehouse.edit', ['warehouse' => $warehouse])
                 @livewire('warehouse.destroy', ['warehouse' => $warehouse])
             </div>

@@ -89,7 +89,8 @@
                 </div>
                 @if ($photoUri)
                     <div class="flex justify-center">
-                        <img class="w-[10vw] y-[10vw] rounded-full object-cover self-center" src="{{ $photoUri->temporaryUrl() }}">
+                        <img class="w-[10vw] y-[10vw] rounded-full object-cover self-center"
+                            src="{{ $photoUri->temporaryUrl() }}">
                     </div>
                 @endif
 
@@ -141,6 +142,7 @@
             </div>
         </form>
     </x:modal>
-    <button class="btn btn-outline btn-primary" x-on:click="$dispatch('open-modal', { name: 'storeProduct' })">Crear
-        Producto</button>
+    <button class="btn btn-outline btn-primary btn-sm normal-case"
+        x-on:click="$dispatch('open-modal', { name: 'storeProduct' })">Crear
+        producto</button>
 </div>

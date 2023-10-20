@@ -26,18 +26,21 @@
                 </div>
                 @if ($photoUri)
                     <div class="flex justify-center">
-                        <img class="w-[10vw] y-[10vw] rounded-full object-cover self-center" src="{{ $photoUri->temporaryUrl() }}">
+                        <img class="w-[10vw] y-[10vw] rounded-full object-cover self-center"
+                            src="{{ $photoUri->temporaryUrl() }}">
                     </div>
                 @endif
             </div>
             <div class="flex flex-1 flex-row justify-center gap-5 mt-10">
-                <button class="btn btn-outline btn-primary" x-on:click="$dispatch('close-modal')" type="button">Cerrar</button>
+                <button class="btn btn-outline btn-primary" x-on:click="$dispatch('close-modal')"
+                    type="button">Cerrar</button>
                 <button class="btn btn-primary" wire:loading.attr="disabled" wire:target="store, photoUri">
                     <span wire:loading.@class(['loading loading-spinner'])>Guardar</span>
                 </button>
             </div>
         </form>
     </x:modal>
-    <button class="btn btn-outline btn-primary" x-on:click="$dispatch('open-modal', { name: 'storeCategory' })">Crear
-        Categoría</button>
+    <button class="btn btn-outline btn-primary btn-sm normal-case"
+        x-on:click="$dispatch('open-modal', { name: 'storeCategory' })">Crear
+        categoría</button>
 </div>

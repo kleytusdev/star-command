@@ -111,7 +111,7 @@
                         </div>
 
                         <!-- Agregar producto -->
-                        <div class="space-y-2">
+                        <div class="space-y-2 self-end">
                             <button wire:click="addProduct" class="btn btn-outline btn-primary btn-sm normal-case py-5 content-center">
                                 Agregar producto
                             </button>

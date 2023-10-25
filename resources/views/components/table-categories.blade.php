@@ -1,6 +1,6 @@
 @props(['categories'])
 <div class="w-[100%] overflow-x-auto">
-    <table class="table table-zebra">
+    <table class="table">
         <thead class="text-sm text-gray-700 bg-white dark:bg-dark-eval-0 dark:text-gray-400">
             <tr class="border-none">
                 <th>ID</th>

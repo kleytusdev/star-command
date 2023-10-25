@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('warehouses', WarehouseShow::class)->name('warehouses.index');
     Route::get('sales', SaleIndex::class)->name('sales.index');
     Route::get('sales/create', SaleCreate::class)->name('sales.create');
+    Route::post('sales', [SaleCreate::class, 'store'])->name('sales.store');
 
     Route::get('subusers', [SubuserController::class, 'index'])->name('subusers.index');
 });

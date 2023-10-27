@@ -1,5 +1,6 @@
 <?php
 
+use App\Api\ApiPeru;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SubuserController;
@@ -42,6 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::post('sales', [SaleCreate::class, 'store'])->name('sales.store');
 
     Route::get('subusers', [SubuserController::class, 'index'])->name('subusers.index');
+
+    // Api Perú
+    Route::get('api/dni/{dni}', [ApiPeru::class, 'getDni'])->name('dni.get');
+    Route::get('api/ruc/{ruc}', [ApiPeru::class, 'getRuc'])->name('ruc.get');
 });
 
 require __DIR__ . '/auth.php';

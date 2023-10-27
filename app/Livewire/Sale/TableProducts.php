@@ -8,6 +8,7 @@ use Livewire\Component;
 class TableProducts extends Component
 {
     public array $products = [];
+    public $productIndex = null;
 
     protected $listeners = ['addTableProducts' => 'tableProducts'];
 
@@ -23,7 +24,7 @@ class TableProducts extends Component
         // Obtener los datos de los productos basados en los IDs
         $productsData = Product::whereIn('id', $productIds)->get();
 
-        // Modificar el array $this->products para agregar las propiedades "image" y "total"
+        // Modificar el array $this->products para agregar las propiedades
         foreach ($this->products as &$addedProduct) {
             $product = $productsData->firstWhere('id', $addedProduct['productId']);
 
@@ -34,9 +35,15 @@ class TableProducts extends Component
             }
         }
 
-        return collect($this->products);
+        return $this->products;
     }
 
+    public function removeProduct($index)
+    {
+        unset($this->products[$index]);
+        $this->productIndex = null;
+        $this->dispatch('removeProduct', $this->products);
+    }
 
     public function render()
     {

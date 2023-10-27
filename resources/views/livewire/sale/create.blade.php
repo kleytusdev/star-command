@@ -24,18 +24,8 @@
                         </div>
                         <div class="flex flex-1">
                             <!-- DNI -->
-                            <div class="w-[100%] space-y-2" x-show="selectedOption === 'DNI'">
-                                <x-form.label for="DNI" :value="__('DNI')" />
-                                <x-form.input-with-icon-wrapper>
-                                    <x-slot name="icon">
-                                        <x-icons.document aria-hidden="true" class="w-5 h-5" />
-                                    </x-slot>
-                                    <x-form.input wire:model="DNI" withicon id="DNI" class="block w-full"
-                                        type="text" name="DNI" :value="old('DNI')" required autofocus
-                                        placeholder="{{ __('DNI') }}" maxlength="8"
-                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
-
-                                </x-form.input-with-icon-wrapper>
+                            <div class="w-[100%]" x-show="selectedOption === 'DNI'">
+                                @livewire('credentials.dni-lookup')
                             </div>
 
                             <!-- RUC -->
@@ -65,7 +55,8 @@
                                 id="paymentMethod" name="paymentMethod" wire:model="paymentMethod">
                                 <option value="">Seleccione un método de pago</option>
                                 @foreach ($paymentMethods as $method)
-                                    <option class="font-nunito" value="{{ $method->name }}">{{ $method->value }}
+                                    <option class="font-nunito" value="{{ $method->value }}">
+                                        {{ $method->value }}
                                     </option>
                                 @endForeach
                             </select>

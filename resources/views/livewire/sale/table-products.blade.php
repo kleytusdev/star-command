@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($productsData as $product)
+            @foreach ($productsData as $index => $product)
                 <tr class="bg-white border-b dark:bg-dark-eval-0 dark:border-dark-eval-1 border-gray-100">
                     <th>{{ $product['name'] }}</th>
                     <th>
@@ -25,7 +25,8 @@
                     <th>{{ $product['quantity'] }}</th>
                     <th>{{ $product['total'] }}</th>
                     <th class="text-center">
-                        <button class="btn btn-outline btn-primary btn-sm normal-case content-center">
+                        <button class="btn btn-outline btn-primary btn-sm normal-case content-center"
+                            wire:click="removeProduct({{ $index }})">
                             Eliminar
                         </button>
                     </th>

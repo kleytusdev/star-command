@@ -4,17 +4,23 @@ namespace App\Livewire\Sale;
 
 use App\Models\Product;
 use Livewire\Component;
-use App\Enums\SalePaymentMethodEnum;
 use App\Models\Warehouse;
+use App\Enums\SalePaymentMethodEnum;
+use Illuminate\Validation\Rules\Enum;
 
 class Create extends Component
 {
     public $price;
+    public $paymentMethod;
     public $quantity;
     public $productId;
     public array $products = [];
 
-    protected $listeners = ['priceUpdated' => 'updatePrice', 'productIdUpdated' => 'addProductId'];
+    protected $listeners = [
+        'priceUpdated' => 'updatePrice',
+        'productIdUpdated' => 'addProductId',
+        'removeProduct' => 'updatedProducts'
+    ];
 
     public function updatePrice($newPrice)
     {
@@ -26,13 +32,14 @@ class Create extends Component
         $this->productId = $newProductId;
     }
 
-    public function render()
+    public function removeProduct($index)
     {
-        return view('livewire.sale.create', [
-            'products' => Product::all(),
-            'warehouses' => Warehouse::all(),
-            'paymentMethods' => SalePaymentMethodEnum::cases(),
-        ]);
+        unset($this->products[$index]);
+    }
+
+    public function updatedProducts($products)
+    {
+        $this->products = $products;
     }
 
     public function addProduct()
@@ -68,9 +75,6 @@ class Create extends Component
             }
 
             $this->dispatch('addTableProducts', $this->products);
-
-            $this->price = null;
-            $this->quantity = null;
         }
     }
 
@@ -85,8 +89,19 @@ class Create extends Component
         return false;
     }
 
+    public function render()
+    {
+        return view('livewire.sale.create', [
+            'products' => Product::all(),
+            'warehouses' => Warehouse::all(),
+            'paymentMethods' => SalePaymentMethodEnum::cases(),
+        ]);
+    }
+
     public function store()
     {
-        dd($this->products);
+        $this->validate([
+            'paymentMethod' => ['required', new Enum(SalePaymentMethodEnum::class)],
+        ]);
     }
 }

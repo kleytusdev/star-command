@@ -7,24 +7,29 @@ use Livewire\Component;
 
 class DniLookup extends Component
 {
-    public $dni = '';
-    public $loading = false;
-    public $dniData;
+    public int $dni;
+    public bool $loading = false;
+    public object $dniData;
 
-    public function getDniData(ApiPeru $apiPeru)
+    public function getDniData(ApiPeru $apiPeru): void
     {
         $this->loading = true;
+        $this->resetErrorBag('dni');
 
-        if ($this->dni && preg_match('/^\d{8}$/', $this->dni)) {
-            $response = $apiPeru->getDni($this->dni);
+        try {
+            if ($this->dni && preg_match('/^\d{8}$/', $this->dni)) {
+                $response = $apiPeru->getDni($this->dni);
 
-            if ($response) {
-                $this->dniData = $response;
-            } else {
-                $this->dniData = ['error' => 'No se pudo obtener la información del DNI'];
+                if ($response) {
+                    $this->dniData = $response;
+                } else {
+                    $this->addError('dni', "No se pudo obtener la información del DNI");
+                }
             }
+            $this->loading = false;
+        } catch (\Throwable $th) {
+            $this->addError('dni', "No se pudo obtener la información del DNI");
         }
-        $this->loading = false;
     }
 
     public function render()

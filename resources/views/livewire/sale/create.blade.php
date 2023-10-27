@@ -29,17 +29,8 @@
                             </div>
 
                             <!-- RUC -->
-                            <div class="w-[100%] space-y-2" x-show="selectedOption === 'RUC'">
-                                <x-form.label for="RUC" :value="__('RUC')" />
-                                <x-form.input-with-icon-wrapper>
-                                    <x-slot name="icon">
-                                        <x-icons.document aria-hidden="true" class="w-5 h-5" />
-                                    </x-slot>
-                                    <x-form.input wire:model="RUC" withicon id="RUC" class="block w-full"
-                                        type="text" name="RUC" :value="old('RUC')" required autofocus
-                                        placeholder="{{ __('RUC') }}" maxlength="11"
-                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
-                                </x-form.input-with-icon-wrapper>
+                            <div class="w-[100%]" x-show="selectedOption === 'RUC'">
+                                @livewire('credentials.ruc-lookup')
                             </div>
                         </div>
                     </div>

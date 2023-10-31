@@ -26,11 +26,17 @@
                             <!-- DNI -->
                             <div class="w-[100%]" x-show="selectedOption === 'DNI'">
                                 @livewire('credentials.dni-lookup')
+                                @error('dataClient')
+                                    <small class="text-red-500">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             <!-- RUC -->
                             <div class="w-[100%]" x-show="selectedOption === 'RUC'">
                                 @livewire('credentials.ruc-lookup')
+                                @error('dataClient')
+                                    <small class="text-red-500">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -51,6 +57,9 @@
                                     </option>
                                 @endForeach
                             </select>
+                            @error('paymentMethod')
+                                <small class="text-red-500">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         @livewire('components.dropdown')
@@ -68,7 +77,7 @@
                                     type="text" name="price" :value="$price" required disabled
                                     placeholder="{{ __('Precio') }}" />
                             </x-form.input-with-icon-wrapper>
-                            @error('price')
+                            @error('products.price')
                                 <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
@@ -94,7 +103,8 @@
 
                         <!-- Agregar producto -->
                         <div class="space-y-2 self-end">
-                            <button wire:click="addProduct" class="btn btn-outline btn-primary btn-sm normal-case py-5 content-center">
+                            <button wire:click="addProduct"
+                                class="btn btn-outline btn-primary btn-sm normal-case py-5 content-center">
                                 Agregar producto
                             </button>
                         </div>

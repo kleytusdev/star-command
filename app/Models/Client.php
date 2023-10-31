@@ -16,6 +16,16 @@ class Client extends Model
         return $this->morphTo();
     }
 
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
     protected $fillable = [
         'id',
         'clientable_type',

@@ -26,14 +26,8 @@ class Sale extends Model
         'igv',
         'subtotal',
         'total',
-        'status',
         'payment_method',
         'client_id',
         'created_by',
     ];
-
-    // protected $casts = [
-    //   'status' => SaleStatusEnum::class,
-    //   'payment_method' => SalePaymentMethodEnum::class
-    // ];
 }

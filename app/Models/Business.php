@@ -11,6 +11,11 @@ class Business extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public function client()
+    {
+        return $this->morphOne(Client::class, 'clientable');
+    }
+
     public function district()
     {
         return $this->belongsTo(District::class);

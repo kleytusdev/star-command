@@ -21,5 +21,6 @@ class SaleDetail extends Model
         'unit_price',
         'total',
         'sale_id',
+        'product_id'
     ];
 }

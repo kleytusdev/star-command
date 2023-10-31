@@ -37,14 +37,9 @@ class ApiPeru extends Controller
         'maternal_surname' => $person->maternal_surname,
         'phone_number' => $person->phone_number,
         'full_name' => $person->full_name,
-        'verification_code' => $person->verification_code,
-        'address' => $person->address,
-        'full_address' => $person->full_address,
         'region' =>  $regionName,
         'province' =>  $provinceName,
         'district' =>  $districtName,
-        'ubigeous_sunat' => $person->ubigeous_sunat,
-        'ubigeous' => $person->ubigeous,
         'district_id' => $person->district_id,
       ];
     }

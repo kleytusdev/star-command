@@ -19,14 +19,14 @@ class TableProducts extends Component
 
     public function listProducts()
     {
-        $productIds = collect($this->products)->pluck('productId')->unique();
+        $productIds = collect($this->products)->pluck('id')->unique();
 
         // Obtener los datos de los productos basados en los IDs
         $productsData = Product::whereIn('id', $productIds)->get();
 
         // Modificar el array $this->products para agregar las propiedades
         foreach ($this->products as &$addedProduct) {
-            $product = $productsData->firstWhere('id', $addedProduct['productId']);
+            $product = $productsData->firstWhere('id', $addedProduct['id']);
 
             if ($product) {
                 $addedProduct['name'] = $product->name;

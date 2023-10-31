@@ -6,21 +6,49 @@ use App\Models\Product;
 use Livewire\Component;
 use App\Models\Warehouse;
 use App\Enums\SalePaymentMethodEnum;
+use App\Models\Sale;
+use App\Models\SaleDetail;
+use App\Services\ClientService;
+use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 
 class Create extends Component
 {
     public $price;
-    public $paymentMethod;
+    public $dniData;
+    public $rucData;
     public $quantity;
     public $productId;
+    public $dataClient;
+    public $paymentMethod;
     public array $products = [];
+    public string $lastClientUpdated = '';
 
     protected $listeners = [
         'priceUpdated' => 'updatePrice',
         'productIdUpdated' => 'addProductId',
-        'removeProduct' => 'updatedProducts'
+        'removeProduct' => 'updatedProducts',
+        'dniDataObtained' => 'receiveDniData',
+        'rucDataObtained' => 'receiveRucData'
     ];
+
+    public function receiveDniData($response)
+    {
+        $this->dniData = $response;
+        $this->lastClientUpdated = 'dni';
+        $this->rucData = null; // Reiniciar datos de RUC
+        $this->resetErrorBag('dataClient');
+    }
+
+    public function receiveRucData($response)
+    {
+        $this->rucData = $response;
+        $this->lastClientUpdated = 'ruc';
+        $this->dniData = null; // Reiniciar datos de DNI
+        $this->resetErrorBag('dataClient');
+    }
 
     public function updatePrice($newPrice)
     {
@@ -66,7 +94,7 @@ class Create extends Component
             } else {
                 // El producto no existe, agrégalo al array
                 $product = [
-                    'productId' => $this->productId,
+                    'id' => $this->productId,
                     'price' => $this->price,
                     'quantity' => $this->quantity,
                 ];
@@ -81,7 +109,7 @@ class Create extends Component
     private function findProductIndex($productId)
     {
         foreach ($this->products as $key => $product) {
-            if ($product['productId'] == $productId) {
+            if ($product['id'] == $productId) {
                 return $key;
             }
         }
@@ -98,10 +126,56 @@ class Create extends Component
         ]);
     }
 
-    public function store()
+    public function store(ClientService $clientService)
     {
+        $this->dataClient = match (true) {
+            $this->dniData !== null => $this->dniData, // Si solo DNI tiene datos, se guarda DNI.
+            $this->rucData !== null => $this->rucData, // Si solo RUC tiene datos, se guarda RUC.
+            default => null, // Si ambos campos son nulos, no se guarda nada.
+        };
+
         $this->validate([
+            'dataClient' => ['required', 'array'],
             'paymentMethod' => ['required', new Enum(SalePaymentMethodEnum::class)],
+            'products' => ['required', 'array'],
+            'products.*.id' => ['required', 'exists:products,id'],
+            'products.*.price' => ['required'],
+            'products.*.quantity' => ['required'],
         ]);
+
+        try {
+            $client = $clientService->createOrUpdateClient($this->dataClient);
+        } catch (\Throwable $th) {
+            session()->flash('error', 'No se encontró al cliente');
+        }
+
+        DB::transaction(function () use ($client) {
+            $sale = Sale::create([
+                'discount' => 0,
+                'igv' => 0,
+                'subtotal' => 0,
+                'total' => 0,
+                'payment_method' => $this->paymentMethod,
+                'client_id' => $client->id,
+                'created_by' => Auth::id(),
+            ]);
+
+            foreach ($this->products as $product) {
+                $quantity = $product['quantity'];
+                SaleDetail::create([
+                    'quantity' => $quantity,
+                    'unit_price' => $product['price'],
+                    'total' => $quantity * $product['price'],
+                    'sale_id' => $sale->id,
+                    'product_id' => $product['id'],
+                ]);
+
+                $product = Product::findOrFail($product['id']);
+                $newStock = $product->stock - $quantity;
+                $product->update(['stock' => $newStock]);
+            }
+        });
+
+        return redirect(route('sales.index'));
     }
 }

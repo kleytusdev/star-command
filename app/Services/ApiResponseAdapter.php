@@ -10,14 +10,9 @@ class ApiResponseAdapter
     'nombres' => 'name',
     'apellido_paterno' => 'paternal_surname',
     'apellido_materno' => 'maternal_surname',
-    'codigo_verificacion' => 'verification_code',
     'departamento' => 'region',
     'provincia' => 'province',
     'distrito' => 'district',
-    'direccion' => 'address',
-    'direccion_completa' => 'full_address',
-    'ubigeo_sunat' => 'ubigeous_sunat',
-    'ubigeo' => 'ubigeous',
   ];
 
   protected $apiRucResponseMapping = [

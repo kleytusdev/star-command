@@ -17,7 +17,6 @@ return new class extends Migration
             $table->decimal('igv', 9, 2);
             $table->decimal('subtotal', 9, 2);
             $table->decimal('total', 9, 2);
-            $table->string('status', 50);
             $table->string('payment_method', 50);
             $table->foreignId('client_id')->constrained('clients');
             $table->foreignId('created_by')->constrained('users');

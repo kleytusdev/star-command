@@ -10,7 +10,7 @@
                     <!-- Tipo de cliente -->
                     <span class="label-text text-base font-semibold -mb-3">Seleccionar el tipo de cliente</span>
                     <div class="flex flex-1 items-center gap-5 flex-row" x-data="{ selectedOption: 'DNI' }">
-                        <div class="flex flex-3 flex-col">
+                        <div class="flex flex-3 flex-col self-end">
                             <label class="label cursor-pointer gap-5">
                                 <span class="label-text">DNI</span>
                                 <input type="radio" name="radio-1" class="radio radio-primary checked:bg-primary"

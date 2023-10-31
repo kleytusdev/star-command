@@ -7,14 +7,30 @@ use Livewire\Component;
 
 class RucLookup extends Component
 {
-    public int $ruc;
-    public bool $loading = false;
+    public string $ruc;
     public object $rucData;
+
+    protected $rules = [
+        'ruc' => 'required|numeric|digits:11',
+    ];
+
+    protected $listeners = ['dniDataObtained' => 'updateRucData'];
+
+    public function updateRucData()
+    {
+        $this->rucData = (object)[];
+        $this->ruc = '';
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function getRucData(ApiPeru $apiPeru): void
     {
-        $this->loading = true;
         $this->resetErrorBag('ruc');
+        $this->validate();
 
         try {
             if ($this->ruc && preg_match('/^\d{11}$/', $this->ruc)) {
@@ -22,13 +38,12 @@ class RucLookup extends Component
 
                 if ($response) {
                     $this->rucData = $response;
-                } else {
-                    $this->addError('dni', "No se pudo obtener la información del RUC");
+                    $this->dispatch('rucDataObtained', $response);
                 }
             }
-            $this->loading = false;
         } catch (\Throwable $th) {
             $this->addError('ruc', "No se pudo obtener la información del DNI");
+            $this->rucData = (object)[];
         }
     }
 

@@ -7,12 +7,20 @@ use Livewire\Component;
 
 class DniLookup extends Component
 {
-    public int $dni;
+    public string $dni;
     public object $dniData;
 
     protected $rules = [
         'dni' => 'required|numeric|digits:8',
     ];
+
+    protected $listeners = ['rucDataObtained' => 'updateDniData'];
+
+    public function updateDniData()
+    {
+        $this->dniData = (object)[];
+        $this->dni = '';
+    }
 
     public function updated($propertyName)
     {
@@ -29,6 +37,7 @@ class DniLookup extends Component
                 $response = $apiPeru->getDni($this->dni);
                 if ($response) {
                     $this->dniData = $response;
+                    $this->dispatch('dniDataObtained', $response);
                 }
             }
         } catch (\Throwable $th) {

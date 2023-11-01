@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Sale;
 
+use App\Enums\ProductStatusEnum;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Warehouse;
@@ -172,6 +173,9 @@ class Create extends Component
 
                 $product = Product::findOrFail($product['id']);
                 $newStock = $product->stock - $quantity;
+                if ($newStock === 0) {
+                    $product->update(['status' => ProductStatusEnum::SOLD_OUT]);
+                }
                 $product->update(['stock' => $newStock]);
             }
         });

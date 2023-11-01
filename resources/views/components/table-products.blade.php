@@ -34,7 +34,11 @@
                     <td>{{ $product->qr_code }}</td>
                     <td>
                         <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> {{ $product->status }}
+                            @if ($product->status->value === 'Activo')
+                                <div class="h-2.5 w-2.5 rounded-full bg-p-green mr-2"></div> {{ $product->status }}
+                            @else
+                                <div class="h-2.5 w-2.5 rounded-full bg-p-red mr-2"></div> {{ $product->status }}
+                            @endif
                         </div>
                     </td>
                     <td>

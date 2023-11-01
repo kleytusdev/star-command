@@ -29,6 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        notify()->preset('component-custom', ['title' => 'Notificaciones personalizadas']);
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

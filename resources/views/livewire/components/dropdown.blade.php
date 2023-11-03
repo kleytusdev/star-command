@@ -5,7 +5,7 @@
         <select
             class="form-control border-gray-400 rounded-md focus:border-gray-400
             focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
-            dark:text-gray-300"
+            dark:text-gray-300 p-2"
             id="warehouseId" name="warehouseId" wire:model.live="warehouseId">
             <option value="">Todos los almacenes</option>
             @if ($warehouses->count() > 0)
@@ -24,7 +24,7 @@
         <select
             class="form-control border-gray-400 rounded-md focus:border-gray-400
             focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
-            dark:text-gray-300"
+            dark:text-gray-300 p-2"
             id="productId" name="productId" wire:model.live="productId">
             <option value="">Seleccione un producto</option>
             @if ($products->count() > 0)

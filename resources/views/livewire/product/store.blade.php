@@ -100,7 +100,7 @@
                     <select
                         class="form-control border-gray-400 rounded-md focus:border-gray-400
                         focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
-                        dark:text-gray-300"
+                        dark:text-gray-300 p-2"
                         id="categoryId" name="categoryId" wire:model="categoryId">
                         <option value="">Seleccione una categoría</option>
                         @if ($categories->count() > 0)
@@ -119,7 +119,7 @@
                     <select
                         class="form-control border-gray-400 rounded-md focus:border-gray-400
                         focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
-                        dark:text-gray-300"
+                        dark:text-gray-300 p-2"
                         id="warehouseId" name="warehouseId" wire:model="warehouseId">
                         <option value="" selected>Seleccione un almacén</option>
                         @if ($warehouses->count() > 0)

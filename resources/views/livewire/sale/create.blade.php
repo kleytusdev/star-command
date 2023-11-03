@@ -48,7 +48,7 @@
                             <select
                                 class="form-control border-gray-400 rounded-md focus:border-gray-400
                                 focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
-                                dark:text-gray-300"
+                                dark:text-gray-300 p-2"
                                 id="paymentMethod" name="paymentMethod" wire:model="paymentMethod">
                                 <option value="">Seleccione un método de pago</option>
                                 @foreach ($paymentMethods as $method)
@@ -114,7 +114,7 @@
                     @livewire('sale.table-products')
                 </div>
                 <div class="flex flex-1 flex-row justify-center gap-5 mt-10">
-                    <button class="btn btn-primary" type="submit" wire:click.prevent="store()">
+                    <button class="btn btn-primary" wire:click.prevent="store()">
                         <span wire:loading.@class(['loading loading-spinner'])>Guardar</span>
                     </button>
                 </div>

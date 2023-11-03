@@ -8,7 +8,7 @@
                     Registrar una nueva venta
                 </a>
             </div>
-            <x:table-sales />
+            @livewire('sale.table-sales')
         </div>
         <div class="flex flex-[0.20] flex-col p-6 bg-white rounded-xl dark:bg-dark-eval-0 overflow-y-auto gap-5">
             <div class="flex">

@@ -1,16 +1,13 @@
-@props([
-    'name',
-    'maxWidth' => '2xl'
-])
+@props(['name', 'maxWidth' => '2xl'])
 
 @php
-$maxWidth = [
-    'sm' => 'sm:max-w-sm',
-    'md' => 'sm:max-w-md',
-    'lg' => 'sm:max-w-lg',
-    'xl' => 'sm:max-w-xl',
-    '2xl' => 'sm:max-w-2xl',
-][$maxWidth];
+    $maxWidth = [
+        'sm' => 'sm:max-w-sm',
+        'md' => 'sm:max-w-md',
+        'lg' => 'sm:max-w-lg',
+        'xl' => 'sm:max-w-xl',
+        '2xl' => 'sm:max-w-2xl',
+    ][$maxWidth];
 @endphp
 
 <div x-data="{ show: false, name: '{{ $name }}' }" x-show="show" x-on:open-modal.window="show = ($event.detail.name === name)"
@@ -21,7 +18,8 @@ $maxWidth = [
         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
         x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
-        class="fixed inset-0 transition-opacity bg-gray-300 dark:bg-dark-eval-0 opacity-40 overflow-hidden" aria-hidden="true">
+        class="fixed inset-0 transition-opacity bg-gray-300 dark:bg-dark-eval-1 opacity-60 overflow-hidden"
+        aria-hidden="true">
     </div>
 
     {{-- Modal Body --}}
@@ -31,7 +29,9 @@ $maxWidth = [
         x-transition:leave="transition ease-in duration-200 transform"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        class="my-auto inline-block w-full max-w-xl p-8 overflow-hidden text-left transition-all transform bg-white dark:bg-dark-eval-1 rounded-lg shadow-xl {{ $maxWidth }}">
-        {{ $slot }}
+        class="overflow-y-auto my-auto inline-block w-full max-w-xl p-8 text-left transition-all transform bg-white dark:bg-dark-eval-0 rounded-lg shadow-xl {{ $maxWidth }}">
+        <div class="overflow-y-auto">
+            {{ $slot }}
+        </div>
     </div>
 </div>

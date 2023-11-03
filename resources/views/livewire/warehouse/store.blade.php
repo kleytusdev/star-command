@@ -36,7 +36,7 @@
             <div class="flex flex-1 flex-row justify-center gap-5 mt-10">
                 <button class="btn btn-outline btn-primary" x-on:click="$dispatch('close-modal')"
                     type="button">Cerrar</button>
-                <button class="btn btn-primary" type="submit">Guardar</button>
+                <button class="btn btn-primary">Guardar</button>
             </div>
         </form>
     </x:modal>

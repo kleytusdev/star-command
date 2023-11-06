@@ -152,9 +152,9 @@ class Create extends Component
         DB::transaction(function () use ($client) {
             $sale = Sale::create([
                 'discount' => 0,
-                'igv' => 0,
-                'subtotal' => 0,
-                'total' => 0,
+                'igv' => $this->getIGV(),
+                'subtotal' => $this->getSubtotal(),
+                'total' => $this->getTotal(),
                 'payment_method' => $this->paymentMethod,
                 'client_id' => $client->id,
                 'created_by' => Auth::id(),
@@ -180,5 +180,27 @@ class Create extends Component
         });
 
         return redirect(route('sales.index'));
+    }
+
+    public function getTotal()
+    {
+        $total = 0;
+
+        foreach ($this->products as $product)
+        {
+            $total += $product['price'] * $product['quantity']; // Acumula el valor en $total
+        }
+
+        return $total;
+    }
+
+    public function getSubtotal()
+    {
+        return $this->getTotal() - $this->getIGV();
+    }
+
+    public function getIGV()
+    {
+        return $this->getTotal() * 0.18;
     }
 }

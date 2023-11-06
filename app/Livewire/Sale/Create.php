@@ -2,17 +2,16 @@
 
 namespace App\Livewire\Sale;
 
-use App\Enums\ProductStatusEnum;
+use App\Models\Sale;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Warehouse;
-use App\Enums\SalePaymentMethodEnum;
-use App\Models\Sale;
 use App\Models\SaleDetail;
 use App\Services\ClientService;
-use Exception;
-use Illuminate\Support\Facades\Auth;
+use App\Enums\ProductStatusEnum;
 use Illuminate\Support\Facades\DB;
+use App\Enums\SalePaymentMethodEnum;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Enum;
 
 class Create extends Component

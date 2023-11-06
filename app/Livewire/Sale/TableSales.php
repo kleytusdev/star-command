@@ -22,7 +22,7 @@ class TableSales extends Component
             ->map(function ($sale) {
                 return (object)[
                     'id' => $sale->id,
-                    'productsUri' => $this->getProductsUri($sale->id),
+                    'productsPhotoUri' => $this->getProductsPhotoUri($sale->id)->all(),
                     'discount' => $sale->discount,
                     'igv' => $sale->igv,
                     'subtotal' => $sale->subtotal,
@@ -34,9 +34,9 @@ class TableSales extends Component
             });
     }
 
-    public function getProductsUri(int $saleId)
+    public function getProductsPhotoUri(int $saleId)
     {
-        return (object) SaleDetail::where('sale_id', $saleId)->with('products')
+        return SaleDetail::where('sale_id', $saleId)->with('products')
             ->get()
             ->map(function ($saleDetails) {
                 return (object) [

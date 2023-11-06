@@ -18,11 +18,26 @@
                     <th>{{ $sale->id }}</th>
                     <th>
                         <div class="avatar-group -space-x-6">
-                            <div class="avatar border-0">
-                                <div class="w-12 mask mask-squircle">
-                                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            @php
+                                $maxUris = 3;
+                                $totalUris = count($sale->productsPhotoUri);
+                            @endphp
+
+                            @for ($i = 0; $i < min($maxUris, $totalUris); $i++)
+                                <div class="avatar border-0">
+                                    <div class="w-12 mask mask-squircle">
+                                        <img src="{{ asset('storage/products/' . $sale->productsPhotoUri[$i]->uri) }}" />
+                                    </div>
                                 </div>
-                            </div>
+                            @endfor
+
+                            @if ($totalUris > $maxUris)
+                                <div class="avatar placeholder">
+                                    <div class="w-12 bg-neutral-focus text-neutral-content">
+                                        <span>+{{ $totalUris - $maxUris }}</span>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </th>
                     <td>{{ $sale->client }}</td>

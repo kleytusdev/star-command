@@ -27,6 +27,11 @@ class Product extends Model
         return $this->hasMany(SaleDetail::class);
     }
 
+    public function entryGuide()
+    {
+        return $this->hasMany(EntryGuide::class);
+    }
+
     protected $fillable = [
         'name',
         'price',

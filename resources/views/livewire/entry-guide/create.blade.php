@@ -24,7 +24,7 @@
                                     oninput="this.value = this.value.replace(/[^0-9.]+/g, '').replace(/(\.\d\d).*/g, '$1').replace(/(\.\d*)\./g, '$1');"
                                 />
                             </x-form.input-with-icon-wrapper>
-                            @error('products.price')
+                            @error('price')
                                 <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
@@ -43,6 +43,9 @@
                                     placeholder="{{ __('Cantidad') }}"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                             </x-form.input-with-icon-wrapper>
+                            @error('quantity')
+                                <small class="text-red-500">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <!-- Estado -->

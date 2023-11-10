@@ -11,6 +11,11 @@ class Guide extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public function entryGuides()
+    {
+        return $this->hasMany(EntryGuide::class);
+    }
+
     protected $fillable = [
         'observation',
         'order_at',

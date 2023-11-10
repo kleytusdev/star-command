@@ -11,6 +11,16 @@ class EntryGuide extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public function guide()
+    {
+        return $this->belongsTo(Guide::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
     protected $fillable = [
         'status',
         'quantity',

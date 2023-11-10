@@ -77,7 +77,7 @@
                                     type="text" name="price" :value="$price" required disabled
                                     placeholder="{{ __('Precio') }}" />
                             </x-form.input-with-icon-wrapper>
-                            @error('products.price')
+                            @error('price')
                                 <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>

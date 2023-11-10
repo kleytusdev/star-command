@@ -11,7 +11,6 @@ class TableSales extends Component
 {
     public function render()
     {
-        // dd($this->sales());
         return view('livewire.sale.table-sales', ['sales' => $this->sales()]);
     }
 
@@ -29,7 +28,7 @@ class TableSales extends Component
                     'total' => $sale->total,
                     'paymentMethod' => $sale->payment_method,
                     'client' => ucwords(strtolower($sale->client->clientable->full_name)),
-                    'date' => Carbon::parse($sale->created_at)->format('d-m-Y'),
+                    'date' => Carbon::parse($sale->created_at)->format('d-m-Y H:i a'),
                 ];
             });
     }

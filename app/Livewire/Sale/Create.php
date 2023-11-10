@@ -138,9 +138,9 @@ class Create extends Component
             'dataClient' => ['required', 'array'],
             'paymentMethod' => ['required', new Enum(SalePaymentMethodEnum::class)],
             'products' => ['required', 'array'],
-            'products.*.id' => ['required', 'exists:products,id'],
-            'products.*.price' => ['required'],
-            'products.*.quantity' => ['required'],
+            'price' => ['required'],
+            'quantity' => ['required'],
+            'productId' => ['required', 'exists:products,id'],
         ]);
 
         try {

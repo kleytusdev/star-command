@@ -8,7 +8,7 @@
                     Registrar nueva guía de entrada
                 </a>
             </div>
-            @livewire('sale.table-sales')
+            @livewire('entry-guide.table-entry-guides')
         </div>
     </div>
 </div>

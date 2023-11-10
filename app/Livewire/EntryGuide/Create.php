@@ -105,9 +105,9 @@ class Create extends Component
             'observation' => ['required', 'string', 'max:255'],
             'status' => ['required', new Enum(EntryGuideStatusEnum::class)],
             'products' => ['required', 'array'],
-            'products.*.id' => ['required', 'exists:products,id'],
-            'products.*.price' => ['required'],
-            'products.*.quantity' => ['required'],
+            'price' => ['required'],
+            'quantity' => ['required'],
+            'productId' => ['required', 'exists:products,id'],
         ]);
 
         DB::transaction(function () {

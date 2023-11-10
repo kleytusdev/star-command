@@ -36,11 +36,11 @@
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
-        href="{{ route('subusers.index') }}"
-        :isActive="request()->routeIs('subusers.index')"
+        href="{{ route('entry-guides.index') }}"
+        :isActive="request()->routeIs('entry-guides.index')"
     >
         <x-slot name="icon">
-            <x-icons.users-group-two class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.cube-plus class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 </x-perfect-scrollbar>

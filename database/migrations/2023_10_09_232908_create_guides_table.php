@@ -14,9 +14,8 @@ return new class extends Migration
     {
         Schema::create('guides', function (Blueprint $table) {
             $table->id();
-            $table->text('observation')->nullable();
+            $table->timestamp('order_at')->nullable();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('warehouse_id')->constrained('warehouses');
             $table->timestamps();
             $table->softDeletes();
         });

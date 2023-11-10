@@ -1,4 +1,4 @@
-<div class="flex flex-row gap-10 items-center">
+<div class="flex flex-row gap-20 items-center">
     <!-- Almacen -->
     <div class="space-y-2">
         <x-form.label for="warehouseId" :value="__('Almacén')" />

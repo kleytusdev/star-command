@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('entry_guides', function (Blueprint $table) {
             $table->id();
-            $table->string('reason');
-            $table->string('status');
+            $table->string('observation');
             $table->integer('quantity');
-            $table->dateTime('entry_at');
             $table->foreignId('guide_id')->constrained('guides');
             $table->foreignId('product_id')->constrained('products');
             $table->timestamps();

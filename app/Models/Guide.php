@@ -12,7 +12,7 @@ class Guide extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'observation',
+        'order_at',
         'user_id',
         'warehouse_id'
     ];

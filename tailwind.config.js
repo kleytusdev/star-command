@@ -44,7 +44,8 @@ module.exports = {
                 },
                 p: {
                     'green': '#1ad598',
-                    'red': '#ec5255'
+                    'red': '#ec5255',
+                    'orange': '#ff8f6b'
                 }
             },
         },

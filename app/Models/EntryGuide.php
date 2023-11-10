@@ -12,8 +12,7 @@ class EntryGuide extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'reason',
-        'status',
+        'observation',
         'quantity',
         'entry_at',
         'guide_id',

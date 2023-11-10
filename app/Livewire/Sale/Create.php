@@ -75,7 +75,7 @@ class Create extends Component
         $this->resetErrorBag('quantity');
 
         // Verifica si se ha seleccionado un producto y si la cantidad es válida
-        if ($this->productId && $this->quantity > 0) {
+        if ($this->productId && $this->quantity > 0 && $this->price > 0) {
             $productIndex = $this->findProductIndex($this->productId);
             $product = Product::find($this->productId);
 

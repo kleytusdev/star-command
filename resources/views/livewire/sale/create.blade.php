@@ -42,6 +42,8 @@
                     </div>
 
                     <div class="flex flex-row gap-10 justify-between items-center">
+                        @livewire('components.dropdown')
+
                         <!-- Método de pagos -->
                         <div class="space-y-2">
                             <x-form.label for="paymentMethod" :value="__('Método de pago')" />
@@ -61,8 +63,6 @@
                                 <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
-
-                        @livewire('components.dropdown')
 
                         <!-- Precio -->
                         <div class="space-y-2">

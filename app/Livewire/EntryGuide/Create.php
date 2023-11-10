@@ -3,20 +3,26 @@
 namespace App\Livewire\EntryGuide;
 
 use App\Enums\EntryGuideStatusEnum;
+use App\Enums\ProductStatusEnum;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Warehouse;
 use App\Enums\SalePaymentMethodEnum;
+use App\Models\EntryGuide;
+use App\Models\Guide;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Enum;
 
 class Create extends Component
 {
     public $price;
     public $status;
+    public $orderAt;
     public $quantity;
     public $productId;
-    public $dataClient;
+    public $observation;
     public array $products = [];
-    public string $lastClientUpdated = '';
 
     protected $listeners = [
         'priceUpdated' => 'updatePrice',
@@ -47,7 +53,7 @@ class Create extends Component
     public function addProduct()
     {
         // Verifica si se ha seleccionado un producto y si la cantidad es válida
-        if ($this->productId && $this->quantity > 0) {
+        if ($this->productId && $this->price > 0 && $this->quantity > 0 && $this->status != '') {
             $productIndex = $this->findProductIndex($this->productId);
             $product = Product::find($this->productId);
 
@@ -94,6 +100,43 @@ class Create extends Component
 
     public function store()
     {
-        // dd($this->products);
+        $this->validate([
+            'orderAt' => ['required', 'string', 'max:50'],
+            'observation' => ['required', 'string', 'max:255'],
+            'status' => ['required', new Enum(EntryGuideStatusEnum::class)],
+            'products' => ['required', 'array'],
+            'products.*.id' => ['required', 'exists:products,id'],
+            'products.*.price' => ['required'],
+            'products.*.quantity' => ['required'],
+        ]);
+
+        DB::transaction(function () {
+            $guide = Guide::create([
+                'observation' => $this->observation,
+                'order_at' => $this->orderAt,
+                'created_by' => Auth::id(),
+            ]);
+
+            foreach ($this->products as $product) {
+                $quantity = $product['quantity'];
+                EntryGuide::create([
+                    'status' => $product['status'],
+                    'quantity' => $quantity,
+                    'unit_price' => $product['price'],
+                    'total' => $quantity * $product['price'],
+                    'guide_id' => $guide->id,
+                    'product_id' => $product['id'],
+                ]);
+
+                $product = Product::findOrFail($product['id']);
+                $newStock = $product->stock + $quantity;
+                if ($newStock > 0) {
+                    $product->update(['status' => ProductStatusEnum::ACTIVE]);
+                }
+                $product->update(['stock' => $newStock]);
+            }
+        });
+
+        return redirect(route('entry-guides.index'));
     }
 }

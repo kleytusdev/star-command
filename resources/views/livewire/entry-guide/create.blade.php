@@ -20,7 +20,9 @@
 
                                 <x-form.input wire:model="price" withicon id="price" class="block w-full"
                                     type="text" name="price" :value="$price" required
-                                    placeholder="{{ __('Precio') }}" />
+                                    placeholder="{{ __('Precio') }}"
+                                    oninput="this.value = this.value.replace(/[^0-9.]+/g, '').replace(/(\.\d\d).*/g, '$1').replace(/(\.\d*)\./g, '$1');"
+                                />
                             </x-form.input-with-icon-wrapper>
                             @error('products.price')
                                 <small class="text-red-500">{{ $message }}</small>
@@ -41,9 +43,6 @@
                                     placeholder="{{ __('Cantidad') }}"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                             </x-form.input-with-icon-wrapper>
-                            @error('quantity')
-                                <small class="text-red-500">{{ $message }}</small>
-                            @enderror
                         </div>
 
                         <!-- Estado -->
@@ -52,7 +51,7 @@
                             <select
                                 class="form-control border-gray-400 rounded-md focus:border-gray-400
                                 focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
-                                dark:text-gray-300 p-2"
+                                dark:text-gray-300 p-2" required
                                 id="status" name="status" wire:model="status">
                                 <option value="" selected>Seleccione un estado</option>
                                 @foreach ($statuses as $status)
@@ -61,34 +60,55 @@
                                     </option>
                                 @endForeach
                             </select>
+                            @error('status')
+                                <small class="text-red-500">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <!-- Fecha de orden -->
                         <div class="space-y-2">
-                            <x-form.label for="order_at" :value="__('Orden')" />
+                            <x-form.label for="orderAt" :value="__('Fecha de orden')" />
 
                             <x-form.input-with-icon-wrapper>
                                 <x-slot name="icon">
                                     <x-icons.stock aria-hidden="true" class="w-5 h-5" />
                                 </x-slot>
 
-                                <x-form.input wire:model="order_at" withicon id="order_at" class="block w-full"
-                                    type="date" name="order_at" :value="old('order_at')" required
+                                <x-form.input wire:model="orderAt" withicon id="orderAt" class="block w-full"
+                                    type="date" name="orderAt" :value="old('orderAt')" required
                                     placeholder="{{ __('Fecha de orden') }}" />
                             </x-form.input-with-icon-wrapper>
-                            @error('order_at')
+                            @error('orderAt')
                                 <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
 
                         <!-- Agregar producto -->
                         <div class="space-y-2 self-end">
-                            <button wire:click="addProduct"
+                            <button wire:click.prevent="addProduct"
                                 class="btn btn-outline btn-primary btn-sm normal-case py-5 content-center">
                                 Agregar producto
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <!-- Observación -->
+                <div class="space-y-2 mt-5">
+                    <x-form.label for="observation" :value="__('Observación')" />
+
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-icons.eye-question aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+
+                        <x-form.input wire:model="observation" withicon id="observation" class="block w-full"
+                            type="text" name="observation" :value="$observation"
+                            placeholder="{{ __('Observación') }}" />
+                    </x-form.input-with-icon-wrapper>
+                    @error('observation')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="mt-10">
                     @livewire('entry-guide.table-products')

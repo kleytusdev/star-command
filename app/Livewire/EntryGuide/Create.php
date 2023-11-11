@@ -25,15 +25,9 @@ class Create extends Component
     public array $products = [];
 
     protected $listeners = [
-        'priceUpdated' => 'updatePrice',
         'productIdUpdated' => 'addProductId',
         'removeProduct' => 'updatedProducts',
     ];
-
-    public function updatePrice($newPrice)
-    {
-        $this->price = $newPrice;
-    }
 
     public function addProductId($newProductId)
     {

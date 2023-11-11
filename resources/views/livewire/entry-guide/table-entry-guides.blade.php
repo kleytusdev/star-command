@@ -16,15 +16,22 @@
                 <tr class="bg-white border-b dark:bg-dark-eval-0 dark:border-dark-eval-1 border-gray-100">
                     <th>{{ $guide->id }}</th>
                     <th>
-                        <div class="avatar-group -space-x-6">
+                        <div class="flex gap-3">
                             @php
                                 $maxUris = 3;
                                 $totalUris = count($guide->productsPhotoUri);
                             @endphp
 
                             @for ($i = 0; $i < min($maxUris, $totalUris); $i++)
-                                <div class="avatar border-0">
-                                    <div class="w-12 mask mask-squircle">
+                            <div class="avatar border-0 relative">
+                                @if ($guide->productsPhotoUri[$i]->status === 'Sellado')
+                                    <div class="absolute top-0 right-0 z-10 w-[10px] bg-p-green rounded-full border border-dark-eval-0"></div>
+                                @elseif ($guide->productsPhotoUri[$i]->status === 'Reacondicionado')
+                                <div class="absolute top-0 right-0 z-10 w-[10px] bg-p-orange rounded-full border border-dark-eval-0"></div>
+                                @else
+                                    <div class="absolute top-0 right-0 z-10 w-[10px] bg-p-red rounded-full border border-dark-eval-0"></div>
+                                @endif
+                                <div class="w-12 mask mask-squircle">
                                         <img src="{{ asset('storage/products/' . $guide->productsPhotoUri[$i]->uri) }}" />
                                     </div>
                                 </div>

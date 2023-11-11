@@ -78,7 +78,7 @@
                                 </x-slot>
 
                                 <x-form.input wire:model="orderAt" withicon id="orderAt" class="block w-full"
-                                    type="date" name="orderAt" :value="old('orderAt')" required
+                                    type="datetime-local" name="orderAt" :value="old('orderAt')" required
                                     placeholder="{{ __('Fecha de orden') }}" />
                             </x-form.input-with-icon-wrapper>
                             @error('orderAt')

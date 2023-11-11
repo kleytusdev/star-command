@@ -35,7 +35,6 @@ class Store extends Component
             if ($this->dni && preg_match('/^\d{8}$/', $this->dni)) {
                 $response = $apiPeru->getDni($this->dni);
                 if ($response) {
-                    dd($response);
                     $this->dniData = $response;
                 }
             }

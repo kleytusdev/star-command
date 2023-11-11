@@ -4,26 +4,24 @@
             @csrf
             <!-- Agrega tus campos de formulario aquí -->
             <div class="grid gap-6">
-                <!-- Método de pagos -->
+                <!-- DNI -->
                 <div class="space-y-2">
-                    <x-form.label for="documentType" :value="__('Método de pago')" />
-                    <select
-                        class="form-control border-gray-400 rounded-md focus:border-gray-400
-                        focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
-                        dark:text-gray-300 p-2"
-                        id="documentType" name="documentType" wire:model="documentType">
-                        <option value="">Seleccione un método de pago</option>
-                        @foreach ($documentTypes as $documentType)
-                            <option class="font-nunito" value="{{ $documentType->value }}">
-                                {{ $documentType->value }}
-                            </option>
-                        @endForeach
-                    </select>
-                    @error('paymentMethod')
+                    <x-form.label for="dni" :value="__('DNI')" />
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-icons.document aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+                        <x-form.input wire:model="dni" withicon id="DNI" class="block w-full" type="text" name="dni"
+                            :value="old('dni')" required autofocus placeholder="{{ __('DNI') }}" maxlength="8"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        />
+                    </x-form.input-with-icon-wrapper>
+                    @error('dni')
                         <small class="text-red-500">{{ $message }}</small>
                     @enderror
                 </div>
-                <!-- Nombre -->
+
+                <!-- Nombres -->
                 <div class="space-y-2">
                     <x-form.label for="name" :value="__('Nombre')" />
                     <x-form.input-with-icon-wrapper>
@@ -31,11 +29,56 @@
                             <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
                         </x-slot>
                         <x-form.input wire:model="name" withicon id="name" class="block w-full" type="text"
-                            name="name" :value="old('name')" autofocus placeholder="{{ __('Name') }}" />
+                            name="name" :value="old('name')" autofocus placeholder="{{ __('Nombre') }}" />
                     </x-form.input-with-icon-wrapper>
                     @error('name')
                         <small class="text-red-500">{{ $message }}</small>
                     @enderror
+                </div>
+
+                <!-- Apellido Paterno -->
+                <div class="space-y-2">
+                    <x-form.label for="paternal_surname" :value="__('Apellido Paterno')" />
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+                        <x-form.input wire:model="paternal_surname" withicon id="paternal_surname" class="block w-full" type="text"
+                            name="paternal_surname" :value="old('paternal_surname')" autofocus placeholder="{{ __('Apellido Paterno') }}" />
+                    </x-form.input-with-icon-wrapper>
+                    @error('paternal_surname')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- Apellido Materno -->
+                <div class="space-y-2">
+                    <x-form.label for="paternal_surname" :value="__('Apellido Materno')" />
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+                        <x-form.input wire:model="maternal_surname" withicon id="maternal_surname" class="block w-full" type="text"
+                            name="maternal_surname" :value="old('maternal_surname')" autofocus placeholder="{{ __('Apellido Materno') }}" />
+                    </x-form.input-with-icon-wrapper>
+                    @error('maternal_surname')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- Número de celular -->
+                <div class="space-y-2">
+                    <x-form.label for="phoneNumber" :value="__('Número de celular')" />
+
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-icons.phone aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+
+                        <x-form.input wire:model="phoneNumber" withicon id="phoneNumber" class="block w-full" type="text"
+                            name="phoneNumber" :value="old('phoneNumber')" required placeholder="{{ __('Número de celular') }}" maxlength='9'
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                    </x-form.input-with-icon-wrapper>
                 </div>
                 <!-- Foto -->
                 <div class="space-y-2">

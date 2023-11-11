@@ -75,9 +75,8 @@
                         </x-slot>
 
                         <x-form.input wire:model="stock" withicon id="stock" class="block w-full" type="text"
-                            name="stock" :value="old('stock')" required placeholder="{{ __('Stock') }}"
+                            name="stock" :value="old('stock')" required placeholder="{{ __('Stock') }}" maxlength='6'
                             oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
-
                     </x-form.input-with-icon-wrapper>
                 </div>
 

@@ -77,7 +77,10 @@
                     <p>Estadísticas de entrada productos</p>
                 </div>
             </div>
-            <div class="p-6 bg-white rounded-xl dark:bg-dark-eval-0">
+            <div class="flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-0 overflow-y-auto">
+                <div class="mb-5">
+                    @livewire('subuser.store')
+                </div>
                 <x:table-subusers />
             </div>
         </div>

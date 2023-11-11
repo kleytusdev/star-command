@@ -40,7 +40,7 @@
 
                                 <x-form.input wire:model="quantity" withicon id="quantity" class="block w-full"
                                     type="text" name="quantity" :value="old('quantity')" required
-                                    placeholder="{{ __('Cantidad') }}"
+                                    placeholder="{{ __('Cantidad') }}" maxlength='6'
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                             </x-form.input-with-icon-wrapper>
                             @error('quantity')

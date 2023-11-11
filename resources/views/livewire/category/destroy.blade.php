@@ -1,7 +1,7 @@
 <form wire:submit.prevent="destroy">
     @csrf
     <button
-        class="pointer-events-auto flex-none rounded-md px-2 py-[0.3125rem] font-medium text-slate-700 dark:text-slate-200 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 dark:hover:bg-dark-eval-3"
+        class="btn btn-outline btn-error btn-xs normal-case"
         type="submit">
         Borrar
     </button>

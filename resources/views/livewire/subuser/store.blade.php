@@ -5,15 +5,21 @@
             <!-- Agrega tus campos de formulario aquí -->
             <div class="grid gap-6">
                 <!-- DNI -->
+                <script>
+                    if (document.getElementById('dni').value.length === 8) {
+                        Livewire.dispatch('dniChanged', document.getElementById('dni').value);
+                    }
+                </script>
                 <div class="space-y-2">
                     <x-form.label for="dni" :value="__('DNI')" />
                     <x-form.input-with-icon-wrapper>
                         <x-slot name="icon">
                             <x-icons.document aria-hidden="true" class="w-5 h-5" />
                         </x-slot>
-                        <x-form.input wire:model="dni" withicon id="DNI" class="block w-full" type="text" name="dni"
+                        <x-form.input wire:model="dni" withicon id="dni" class="block w-full" type="text" name="dni"
                             :value="old('dni')" required autofocus placeholder="{{ __('DNI') }}" maxlength="8"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            wire:change="dispatch('dniChanged')"
                         />
                     </x-form.input-with-icon-wrapper>
                     @error('dni')
@@ -38,30 +44,30 @@
 
                 <!-- Apellido Paterno -->
                 <div class="space-y-2">
-                    <x-form.label for="paternal_surname" :value="__('Apellido Paterno')" />
+                    <x-form.label for="paternalSurname" :value="__('Apellido Paterno')" />
                     <x-form.input-with-icon-wrapper>
                         <x-slot name="icon">
                             <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
                         </x-slot>
-                        <x-form.input wire:model="paternal_surname" withicon id="paternal_surname" class="block w-full" type="text"
-                            name="paternal_surname" :value="old('paternal_surname')" autofocus placeholder="{{ __('Apellido Paterno') }}" />
+                        <x-form.input wire:model="paternalSurname" withicon id="paternalSurname" class="block w-full" type="text"
+                            name="paternalSurname" :value="old('paternalSurname')" autofocus placeholder="{{ __('Apellido Paterno') }}" />
                     </x-form.input-with-icon-wrapper>
-                    @error('paternal_surname')
+                    @error('paternalSurname')
                         <small class="text-red-500">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <!-- Apellido Materno -->
                 <div class="space-y-2">
-                    <x-form.label for="paternal_surname" :value="__('Apellido Materno')" />
+                    <x-form.label for="paternalSurname" :value="__('Apellido Materno')" />
                     <x-form.input-with-icon-wrapper>
                         <x-slot name="icon">
                             <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
                         </x-slot>
-                        <x-form.input wire:model="maternal_surname" withicon id="maternal_surname" class="block w-full" type="text"
-                            name="maternal_surname" :value="old('maternal_surname')" autofocus placeholder="{{ __('Apellido Materno') }}" />
+                        <x-form.input wire:model="paternalSurname" withicon id="paternalSurname" class="block w-full" type="text"
+                            name="paternalSurname" :value="old('paternalSurname')" autofocus placeholder="{{ __('Apellido Materno') }}" />
                     </x-form.input-with-icon-wrapper>
-                    @error('maternal_surname')
+                    @error('paternalSurname')
                         <small class="text-red-500">{{ $message }}</small>
                     @enderror
                 </div>

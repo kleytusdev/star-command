@@ -18,10 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('active')->default(true);
             $table->string('photo_uri', 255)->nullable();
-            $table->string('two_factor_secret', 255)->nullable();
-            $table->string('two_factor_recovery_codes', 255)->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('two_factor_confirmed_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

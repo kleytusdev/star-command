@@ -9,7 +9,7 @@ namespace App\Enums;
  */
 enum EntryGuideStatusEnum: string
 {
-  case SEALED       = 'Sellado';
-  case DEFECTIVE    = 'Defectuoso';
-  case REFURBISHED  = 'Reacondicionado';
+    case SEALED       = 'Sellado';
+    case DEFECTIVE    = 'Defectuoso';
+    case REFURBISHED  = 'Reacondicionado';
 }

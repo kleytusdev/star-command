@@ -1,9 +1,26 @@
 <div>
-    <x:modal name="storeSubuser" maxWidth="sm" x-show="modalOpen">
+    <x:modal name="storeSubuser" maxWidth="lg" x-show="modalOpen">
         <form wire:submit.prevent="store">
             @csrf
             <!-- Agrega tus campos de formulario aquí -->
             <div class="grid gap-6">
+                <!-- Role -->
+                <div class="space-y-2">
+                    <x-form.label for="role" :value="__('Rol')" />
+                    <select
+                        class="w-full form-control border-gray-400 rounded-md focus:border-gray-400
+                        focus:ring-primary dark:border-gray-500 dark:bg-dark-eval-1
+                        dark:text-gray-300 p-2"
+                        id="role" name="role" wire:model="role">
+                        <option value="">Seleccione un rol</option>
+                        <option class="font-nunito" value="Vendedor">Vendedor</option>
+                        <option class="font-nunito" value="Almacenista">Almacenista</option>
+                    </select>
+                    @error('role')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
                 <!-- DNI -->
                 <script>
                     if (document.getElementById('dni').value.length === 8) {
@@ -59,15 +76,45 @@
 
                 <!-- Apellido Materno -->
                 <div class="space-y-2">
-                    <x-form.label for="paternalSurname" :value="__('Apellido Materno')" />
+                    <x-form.label for="maternalSurname" :value="__('Apellido Materno')" />
                     <x-form.input-with-icon-wrapper>
                         <x-slot name="icon">
                             <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
                         </x-slot>
-                        <x-form.input wire:model="paternalSurname" withicon id="paternalSurname" class="block w-full" type="text"
-                            name="paternalSurname" :value="old('paternalSurname')" autofocus placeholder="{{ __('Apellido Materno') }}" />
+                        <x-form.input wire:model="maternalSurname" withicon id="maternalSurname" class="block w-full" type="text"
+                            name="maternalSurname" :value="old('maternalSurname')" autofocus placeholder="{{ __('Apellido Materno') }}" />
                     </x-form.input-with-icon-wrapper>
-                    @error('paternalSurname')
+                    @error('maternalSurname')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- Correo -->
+                <div class="space-y-2">
+                    <x-form.label for="email" :value="__('Correo')" />
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+                        <x-form.input wire:model="email" withicon id="email" class="block w-full" type="text"
+                            name="email" :value="old('email')" autofocus placeholder="{{ __('Correo') }}" />
+                    </x-form.input-with-icon-wrapper>
+                    @error('email')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- Contraseña -->
+                <div class="space-y-2">
+                    <x-form.label for="password" :value="__('Contraseña')" />
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+                        <x-form.input wire:model="password" withicon id="password" class="block w-full" type="password"
+                            name="password" :value="old('password')" autofocus placeholder="{{ __('Contraseña') }}" />
+                    </x-form.input-with-icon-wrapper>
+                    @error('password')
                         <small class="text-red-500">{{ $message }}</small>
                     @enderror
                 </div>

@@ -9,6 +9,6 @@ namespace App\Enums;
  */
 enum ProductStatusEnum: string
 {
-  case ACTIVE       = 'Activo';
-  case SOLD_OUT     = 'Agotado';
+    case ACTIVE       = 'Activo';
+    case SOLD_OUT     = 'Agotado';
 }

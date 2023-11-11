@@ -9,6 +9,6 @@ namespace App\Enums;
  */
 enum DocumentTypeEnum: string
 {
-  case DNI            = 'DNI';
-  case CARD_FOREIGNER = 'CARNET EXT.';
+    case DNI            = 'DNI';
+    case CARD_FOREIGNER = 'CARNET EXT.';
 }

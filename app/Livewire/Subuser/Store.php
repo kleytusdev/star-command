@@ -28,7 +28,6 @@ class Store extends Component
     public $paternalSurname;
     public $maternalSurname;
     public string $phoneNumber;
-    public string $documentType;
     public string $password_confirmation;
 
     protected $rules = [

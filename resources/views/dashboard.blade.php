@@ -81,7 +81,7 @@
                 <div class="mb-5">
                     @livewire('subuser.store')
                 </div>
-                <x:table-subusers />
+                @livewire('subuser.table')
             </div>
         </div>
         <div class="flex flex-[0.20] flex-col p-6 bg-white rounded-xl dark:bg-dark-eval-0 overflow-y-auto">

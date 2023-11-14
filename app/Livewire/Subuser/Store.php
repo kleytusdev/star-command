@@ -9,6 +9,7 @@ use Livewire\Component;
 use App\Enums\RoleEnum;
 use Livewire\WithFileUploads;
 use App\Enums\DocumentTypeEnum;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Enum;
@@ -28,6 +29,7 @@ class Store extends Component
     public $maternalSurname;
     public string $phoneNumber;
     public string $documentType;
+    public string $password_confirmation;
 
     protected $rules = [
         'dni' => ['required', 'numeric', 'digits:8'],
@@ -74,7 +76,7 @@ class Store extends Component
     {
         $this->validate([
             'role' => ['required', 'string', new Enum(RoleEnum::class)],
-            'dni' => ['required', 'numeric', 'digits:8'],
+            'dni' => ['required', 'numeric', 'digits:8', 'unique:people,document_number'],
             'name' => ['required', 'string'],
             'paternalSurname' => ['required', 'string'],
             'maternalSurname' => ['required', 'string'],
@@ -83,32 +85,36 @@ class Store extends Component
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $person = Person::firstOrCreate([
-            'document_type' => DocumentTypeEnum::DNI,
-            'document_number' => $this->dni,
-        ], [
-            'name' => $this->name,
-            'paternal_surname' => $this->paternalSurname,
-            'maternal_surname' => $this->maternalSurname,
-            'full_name' => $this->dniData->fullName,
-            'phone_number' => $this->phoneNumber
-        ]);
+        DB::transaction(function () {
+            $person = Person::firstOrCreate([
+                'document_type' => DocumentTypeEnum::DNI,
+                'document_number' => $this->dni,
+            ], [
+                'name' => $this->dniData->name,
+                'paternal_surname' => $this->dniData->paternal_surname,
+                'maternal_surname' => $this->dniData->maternal_surname,
+                'full_name' => $this->dniData->full_name,
+                'phone_number' => $this->phoneNumber
+            ]);
 
-        $user = User::create([
-            'email' => $this->email,
-            'password' => Hash::make($this->password),
-            'person_id' => $person->id
-        ]);
+            $user = User::create([
+                'email' => $this->email,
+                'password' => Hash::make($this->password),
+                'person_id' => $person->id
+            ]);
 
-        // Guardar el archivo en el disco 'public' y obtener la ruta completa
-        if ($this->photoUri) {
-            $extension = $this->photoUri->extension();
-            $imageName = date('YmdHis') . '_' . rand(11111, 99999) . '.' . $extension;
-            $this->photoUri->storeAs('public/users', $imageName);
-            $user->photo_uri = $imageName;
-        }
+            // Guardar el archivo en el disco 'public' y obtener la ruta completa
+            if ($this->photoUri) {
+                $extension = $this->photoUri->extension();
+                $imageName = date('YmdHis') . '_' . rand(11111, 99999) . '.' . $extension;
+                $this->photoUri->storeAs('public/users', $imageName);
+                $user->photo_uri = $imageName;
+            }
 
-        $user->assignRole($this->role);
-        $user->save();
+            $user->assignRole($this->role);
+            $user->save();
+        });
+
+        return redirect(route('dashboard'));
     }
 }

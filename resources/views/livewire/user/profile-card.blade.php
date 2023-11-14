@@ -8,7 +8,7 @@
         </div>
         <div class="mt-16 flex flex-col items-center">
             <h4 class="text-xl font-bold text-navy-700 dark:text-white">
-                {{ $user->name }}
+                {{ $user->person?->name }}
             </h4>
             <p class="text-base font-normal text-gray-400">Gerente General</p>
         </div>

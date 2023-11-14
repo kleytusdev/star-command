@@ -119,6 +119,21 @@
                     @enderror
                 </div>
 
+                <!-- Confirmar contraseña -->
+                <div class="space-y-2">
+                    <x-form.label for="password_confirmation" :value="__('Confirmar contraseña')" />
+                    <x-form.input-with-icon-wrapper>
+                        <x-slot name="icon">
+                            <x-heroicon-o-user aria-hidden="true" class="w-5 h-5" />
+                        </x-slot>
+                        <x-form.input wire:model="password_confirmation" withicon id="password_confirmation" class="block w-full" type="password"
+                            name="password_confirmation" :value="old('password_confirmation')" autofocus placeholder="{{ __('Confirmar contraseña') }}" />
+                    </x-form.input-with-icon-wrapper>
+                    @error('password_confirmation')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
+                </div>
+
                 <!-- Número de celular -->
                 <div class="space-y-2">
                     <x-form.label for="phoneNumber" :value="__('Número de celular')" />

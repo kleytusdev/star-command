@@ -2,11 +2,11 @@
 
 use App\Api\ApiPeru;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Sale\Index as SaleIndex;
 use App\Livewire\Sale\Create as SaleCreate;
 use App\Livewire\Product\Show as ProductShow;
+use App\Livewire\Product\Index as ProductIndex;
 use App\Livewire\Category\Show as CategoryShow;
 use App\Livewire\Warehouse\Show as WarehouseShow;
 use App\Livewire\EntryGuide\Index as EntryGuideIndex;
@@ -32,7 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('products', ProductShow::class)->name('products.index');
+    Route::get('products', ProductIndex::class)->name('products.index');
+    Route::get('product/{id}', ProductShow::class)->name('products.show');
+
     Route::get('categories', CategoryShow::class)->name('categories.index');
     Route::get('warehouses', WarehouseShow::class)->name('warehouses.index');
     Route::get('sales', SaleIndex::class)->name('sales.index');

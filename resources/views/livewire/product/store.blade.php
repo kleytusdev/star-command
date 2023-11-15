@@ -1,7 +1,6 @@
 <div>
     <x:modal name="storeProduct" maxWidth="lg" x-show="modalOpen">
         <form wire:submit.prevent="store">
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
             @csrf
             <!-- Agrega tus campos de formulario aquí -->
             <div class="grid gap-6">
@@ -15,8 +14,11 @@
                         </x-slot>
 
                         <x-form.input wire:model="name" withicon id="name" class="block w-full" type="text"
-                            name="name" :value="old('name')" required autofocus placeholder="{{ __('Name') }}" />
+                            name="name" :value="old('name')" autofocus placeholder="{{ __('Name') }}" />
                     </x-form.input-with-icon-wrapper>
+                    @error('name')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <!-- Precio -->
@@ -29,7 +31,7 @@
                         </x-slot>
 
                         <x-form.input wire:model="price" withicon id="price" class="block w-full" type="text"
-                            name="price" :value="old('price')" required placeholder="{{ __('Precio') }}"
+                            name="price" :value="old('price')" placeholder="{{ __('Precio') }}"
                             oninput="this.value = this.value.replace(/[^0-9.]+/g, '').replace(/(\.\d\d).*/g, '$1').replace(/(\.\d*)\./g, '$1');" />
                     </x-form.input-with-icon-wrapper>
                     @error('price')
@@ -47,8 +49,11 @@
                         </x-slot>
 
                         <x-form.input wire:model="brand" withicon id="brand" class="block w-full" type="text"
-                            name="brand" :value="old('brand')" required placeholder="{{ __('Marca') }}" />
+                            name="brand" :value="old('brand')" placeholder="{{ __('Marca') }}" />
                     </x-form.input-with-icon-wrapper>
+                    @error('brand')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <!-- Modelo -->
@@ -61,8 +66,11 @@
                         </x-slot>
 
                         <x-form.input wire:model="model" withicon id="model" class="block w-full" type="text"
-                            name="model" :value="old('model')" required placeholder="{{ __('Modelo') }}" />
+                            name="model" :value="old('model')" placeholder="{{ __('Modelo') }}" />
                     </x-form.input-with-icon-wrapper>
+                    @error('model')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <!-- Stock -->
@@ -75,9 +83,12 @@
                         </x-slot>
 
                         <x-form.input wire:model="stock" withicon id="stock" class="block w-full" type="text"
-                            name="stock" :value="old('stock')" required placeholder="{{ __('Stock') }}" maxlength='6'
+                            name="stock" :value="old('stock')" placeholder="{{ __('Stock') }}" maxlength='6'
                             oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                     </x-form.input-with-icon-wrapper>
+                    @error('stock')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <!-- Foto -->
@@ -110,6 +121,9 @@
                             No Record Found
                         @endif
                     </select>
+                    @error('categoryId')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <!-- Almacén -->
@@ -130,6 +144,9 @@
                             No Record Found
                         @endif
                     </select>
+                    @error('warehouseId')
+                        <small class="text-red-500">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
             <div class="flex flex-1 flex-row justify-center gap-5 mt-10">

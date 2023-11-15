@@ -30,7 +30,7 @@
                 <td>{{ $product->brand }}</td>
                 <td>{{ $product->model }}</td>
                 <td>{{ $product->stock }}</td>
-                <td>{{ $product->qr_code }}</td>
+                <td>@livewire('qr-code.show', ['product' => $product])</td>
                 <td>
                     <div class="flex items-center">
                         @if ($product->status->value === 'Activo')

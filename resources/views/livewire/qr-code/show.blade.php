@@ -1,5 +1,4 @@
 @props(['product'])
-
 <div>
     <x:modal :name="'show-qr-code-' . $product->id" maxWidth="auto" x-show="modalOpen">
         <div class="bg-white p-5">

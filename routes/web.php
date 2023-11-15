@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('products', ProductIndex::class)->name('products.index');
-    Route::get('product/{id}', ProductShow::class)->name('products.show');
+    Route::get('product/{productId}', ProductShow::class)->name('products.show');
 
     Route::get('categories', CategoryShow::class)->name('categories.index');
     Route::get('warehouses', WarehouseShow::class)->name('warehouses.index');

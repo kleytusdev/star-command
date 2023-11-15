@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Enums\RoleEnum;
 use App\Models\Sale;
 use App\Models\Category;
 use App\Models\User;
@@ -17,11 +18,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            PersonSeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
+            PersonSeeder::class,
+            UserSeeder::class,
         ]);
-
-        User::factory(1)->create();
     }
 }

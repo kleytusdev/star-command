@@ -9,7 +9,7 @@ namespace App\Enums;
  */
 enum RoleEnum: string
 {
-    case OWNER     = 'Dueño';
-    case SELLER    = 'Vendedor';
-    case STORER    = 'Almacenista';
+    case SELLER          = 'Vendedor';
+    case STORER          = 'Almacenista';
+    case GENERAL_MANAGER = 'Gerente General';
 }

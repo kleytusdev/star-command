@@ -34,7 +34,7 @@
                 <button
                     class="flex items-center p-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                 >
-                    <div>{{ Auth::user()->name }}</div>
+                    <div>{{ ucwords(strtolower(Auth::user()->person->name)) }}</div>
 
                     <div class="ml-1">
                         <svg

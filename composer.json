@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "mckenziearts/laravel-notify": "^2.4",
+        "simplesoftwareio/simple-qrcode": "~4",
         "spatie/laravel-permission": "^6.1"
     },
     "require-dev": {

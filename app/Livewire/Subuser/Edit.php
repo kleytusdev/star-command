@@ -54,9 +54,9 @@ class Edit extends Component
             $subuser['photo_uri'] = $imageName;
         }
 
-        // Actualizar la categoría
+        // Actualizar el subusuario
         User::find($this->subuser->id)->update($subuser);
 
-        return redirect()->route('categories.index')->with('success', 'Categoría actualizada exitosamente');
+        return redirect()->route('dashboard')->with('success', 'Subusuario actualizado exitosamente');
     }
 }

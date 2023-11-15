@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('paternal_surname', 50)->nullable();
             $table->string('maternal_surname', 50)->nullable();
             $table->string('phone_number', 50)->nullable();
-            $table->foreignId('district_id')->nullable()->constrained('districts');
             $table->timestamps();
             $table->softDeletes();
         });

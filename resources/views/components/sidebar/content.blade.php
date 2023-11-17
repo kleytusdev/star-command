@@ -8,7 +8,7 @@
         :isActive="request()->routeIs('dashboard')"
     >
         <x-slot name="icon">
-            <x-icons.home class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.home class="flex-shrink-0 w-6 h-6 text-gray-500" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
@@ -16,7 +16,7 @@
         :isActive="request()->routeIs('categories.index')"
     >
         <x-slot name="icon">
-            <x-icons.widget class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.widget class="flex-shrink-0 w-6 h-6 text-gray-500" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
@@ -24,7 +24,7 @@
         :isActive="request()->routeIs('products.index')"
     >
         <x-slot name="icon">
-            <x-icons.box class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.box class="flex-shrink-0 w-6 h-6 text-gray-500" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
@@ -32,7 +32,7 @@
         :isActive="request()->routeIs('sales.index')"
     >
         <x-slot name="icon">
-            <x-icons.money-bag class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.money-bag class="flex-shrink-0 w-6 h-6 text-gray-500" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
     <x-sidebar.link
@@ -40,7 +40,7 @@
         :isActive="request()->routeIs('entry-guides.index')"
     >
         <x-slot name="icon">
-            <x-icons.cube-plus class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <x-icons.cube-plus class="flex-shrink-0 w-6 h-6 text-gray-500" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 </x-perfect-scrollbar>

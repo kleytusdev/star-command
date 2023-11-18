@@ -31,14 +31,14 @@ class Store extends Component
             'name' => $this->name,
             'photo_uri' => $this->photoUri,
         ];
+        $tagNameWithHighestProbability = null;
 
         // Guardar el archivo en el disco 'public' y obtener la ruta completa
-        if ($this->photoUri && $this->name === null) {
+        if ($this->photoUri && $this->name === null || $this->name === '') {
             $customVisionResponse = $this->customVision();
 
             // Inicializar una variable para almacenar el tagName del mayor probability
-            $tagNameWithHighestProbability = null;
-            $highestProbability = 0.85; // Puedes ajustar este valor según tus necesidades
+            $highestProbability = 0.75; // Puedes ajustar este valor según tus necesidades
 
             // Iterar sobre cada predicción
             $foundCategory = false;
@@ -64,16 +64,22 @@ class Store extends Component
                 $this->name = $tagNameWithHighestProbability;
                 return;
             }
-
-            $extension = $this->photoUri->extension();
-            $imageName = date('YmdHis') . '_' . rand(11111, 99999) . '.' . $extension;
-            $this->photoUri->storeAs('public/categories', $imageName);
-            $category['photo_uri'] = $imageName;
         }
 
-        Category::create($category);
 
-        return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente');
+        if ($this->name === null || $this->name === '') {
+            $this->name = $tagNameWithHighestProbability;
+            return;
+        }
+
+        $extension = $this->photoUri->extension();
+        $imageName = date('YmdHis') . '_' . rand(11111, 99999) . '.' . $extension;
+        $this->photoUri->storeAs('public/categories', $imageName);
+        $category['photo_uri'] = $imageName;
+
+        Category::create($category);
+        session()->forget('success'); // Invalidar el flash session
+        return redirect()->route('categories.index');
     }
 
     public function customVision()

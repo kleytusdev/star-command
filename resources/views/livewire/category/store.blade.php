@@ -20,7 +20,7 @@
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
                 @if(session('success'))
-                    <small class="p-green">{{ session('success') }}</small>
+                    <small class="text-p-green">{{ session('success') }}</small>
                 @endif
                 <!-- Nombre -->
                 <div class="space-y-2">

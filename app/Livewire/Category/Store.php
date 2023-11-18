@@ -2,17 +2,16 @@
 
 namespace App\Livewire\Category;
 
+use CURLFile;
 use Livewire\Component;
 use App\Models\Category;
-use CURLFile;
-use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 
 class Store extends Component
 {
     use WithFileUploads;
 
-    public $name, $photoUri;
+    public $name, $photoUri, $tagName;
 
     public function render()
     {
@@ -34,7 +33,7 @@ class Store extends Component
         ];
 
         // Guardar el archivo en el disco 'public' y obtener la ruta completa
-        if ($this->photoUri) {
+        if ($this->photoUri && $this->name === null) {
             $customVisionResponse = $this->customVision();
 
             // Inicializar una variable para almacenar el tagName del mayor probability
@@ -62,6 +61,7 @@ class Store extends Component
                 return;
             } else {
                 session()->flash('success', '¡Encontramos una coincidencia de esta categoría!');
+                $this->name = $tagNameWithHighestProbability;
                 return;
             }
 
@@ -79,6 +79,7 @@ class Store extends Component
     public function customVision()
     {
         $curl = curl_init();
+        $photo = $this->photoUri->getRealPath();
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/b372a266-a93c-4c55-895c-b3844dfbbc79/classify/iterations/Tubazos/image',
@@ -89,7 +90,7 @@ class Store extends Component
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('' => new CURLFile($this->photoUri->getRealPath())),
+            CURLOPT_POSTFIELDS => array('' => new CURLFile($photo)),
             CURLOPT_HTTPHEADER => array(
                 'Prediction-Key: 0623725ffbc64effb1db9e1e964b3e1f',
                 'Content-Type: multipart/form-data'

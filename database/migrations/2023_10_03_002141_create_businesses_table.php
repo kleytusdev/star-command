@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('retention_agent', 50)->nullable();
             $table->json('ubigeous')->nullable();
             $table->json('annexes')->nullable();
-            $table->foreignId('district_id')->nullable()->constrained('districts');
             $table->timestamps();
             $table->softDeletes();
         });

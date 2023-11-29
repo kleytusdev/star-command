@@ -17,7 +17,7 @@
                 <tr class="bg-white border-b dark:bg-dark-eval-0 dark:border-dark-eval-1 border-gray-100">
                     <th>{{ $sale->id }}</th>
                     <th>
-                        <div class="avatar-group -space-x-6">
+                        <div class="flex gap-3">
                             @php
                                 $maxUris = 3;
                                 $totalUris = count($sale->productsPhotoUri);
@@ -25,7 +25,7 @@
 
                             @for ($i = 0; $i < min($maxUris, $totalUris); $i++)
                                 <div class="avatar border-0">
-                                    <div class="w-12 mask mask-squircle">
+                                    <div class="w-12 mask mask-squircle bg-gray-400 dark:bg-neutral-focus">
                                         <img src="{{ asset('storage/products/' . $sale->productsPhotoUri[$i]->uri) }}" />
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
 
                             @if ($totalUris > $maxUris)
                                 <div class="avatar placeholder">
-                                    <div class="w-12 bg-neutral-focus text-neutral-content">
+                                    <div class="w-12 mask mask-squircle bg-gray-100 dark:bg-dark-eval-1 border-0">
                                         <span>+{{ $totalUris - $maxUris }}</span>
                                     </div>
                                 </div>

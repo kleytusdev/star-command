@@ -5,14 +5,26 @@ namespace App\Livewire\Dashboard;
 use App\Models\EntryGuide;
 use App\Models\Sale;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class Index extends Component
 {
     public function render()
     {
+        $chart_options = [
+            'chart_title' => 'Users by months',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\User',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'bar',
+        ];
+        $chart = new LaravelChart($chart_options);
+
         return view('livewire.dashboard.index', [
+            'chart' => $chart,
             'totalSumSales' => $this->totalSumSales(),
             'totalProductEntry' => $this->totalProductEntry(),
             'subuserWithMoreSales' => $this->getSubuserWithMoreSales(),

@@ -71,11 +71,25 @@
                 </div>
             </div>
             <div class="flex flex-1 flex-row gap-5">
-                <div class="flex flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-0">
-                    <p>Estadísticas de ventas</p>
+                <div class="flex flex-1 flex-col p-6 bg-white rounded-xl dark:bg-dark-eval-0">
+                    <img
+                        src="{{ asset('img/bar-graphic-dark.png') }}"
+                        class="self-center hidden dark:block w-[27vw]"
+                    />
+                    <img
+                        src="{{ asset('img/bar-graphic-light.png') }}"
+                        class="self-center block dark:hidden w-[27vw]"
+                    />
                 </div>
-                <div class="flex flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-0">
-                    <p>Estadísticas de entrada productos</p>
+                <div class="flex flex-[0.8] flex-col p-6 bg-white rounded-xl dark:bg-dark-eval-0">
+                    <img
+                        src="{{ asset('img/pie-graphic-dark.png') }}"
+                        class="self-center hidden dark:block w-[23vw] h-[17vw]"
+                    />
+                    <img
+                        src="{{ asset('img/pie-graphic-light.png') }}"
+                        class="self-center block dark:hidden w-[23vw] h-[17vw]"
+                    />
                 </div>
             </div>
             <div class="flex-1 p-6 bg-white rounded-xl dark:bg-dark-eval-0 overflow-y-auto">

@@ -39,7 +39,7 @@
 
                             @if ($totalUris > $maxUris)
                                 <div class="avatar placeholder">
-                                    <div class="w-12 bg-neutral-focus text-neutral-content">
+                                    <div class="w-12 mask mask-squircle bg-gray-100 dark:bg-dark-eval-1 border-0">
                                         <span>+{{ $totalUris - $maxUris }}</span>
                                     </div>
                                 </div>

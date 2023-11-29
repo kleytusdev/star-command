@@ -9,6 +9,7 @@ use App\Livewire\Product\Show as ProductShow;
 use App\Livewire\Product\Index as ProductIndex;
 use App\Livewire\Category\Show as CategoryShow;
 use App\Livewire\Warehouse\Show as WarehouseShow;
+use App\Livewire\Dashboard\Index as DashboardIndex;
 use App\Livewire\EntryGuide\Index as EntryGuideIndex;
 use App\Livewire\EntryGuide\Create as EntryGuideCreate;
 
@@ -23,14 +24,12 @@ use App\Livewire\EntryGuide\Create as EntryGuideCreate;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('dashboard', DashboardIndex::class)->name('dashboard');
 
     Route::get('products', ProductIndex::class)->name('products.index');
     Route::get('product/{productId}', ProductShow::class)->name('products.show');

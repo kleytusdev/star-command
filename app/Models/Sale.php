@@ -21,6 +21,11 @@ class Sale extends Model
         return $this->hasMany(SaleDetail::class);
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class, 'id', 'created_by');
+    }
+
     protected $fillable = [
         'discount',
         'igv',

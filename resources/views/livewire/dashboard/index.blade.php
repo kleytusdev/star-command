@@ -28,7 +28,7 @@
                 <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-0 gap-5">
                     <div class="flex flex-[0.5] items-center space-x-4">
                         <div class="p-3 rounded-xl border-primary border">
-                            <x-icons.graph-new-up class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
+                            <x-icons.cube-plus class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
                         </div>
                         <div class="flex flex-row gap-1">
                             <x-icons.circle-arrow-down-right-filled class="flex-shrink-0 w-6 h-6 text-warning"
@@ -50,7 +50,7 @@
                 <div class="flex-1 flex flex-col p-6 overflow-hidden bg-white rounded-xl dark:bg-dark-eval-0 gap-5">
                     <div class="flex flex-[0.5] items-center space-x-4">
                         <div class="p-3 rounded-xl border-primary border">
-                            <x-icons.cube-plus class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
+                            <x-icons.graph-new-up class="flex-shrink-0 w-6 h-6 text-primary" aria-hidden="true" />
                         </div>
                         <div class="flex flex-row gap-1">
                             <x-icons.circle-arrow-up-right-filled class="w-6 h-6 text-success" aria-hidden="true" />

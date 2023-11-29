@@ -43,4 +43,12 @@
             <x-icons.cube-plus class="flex-shrink-0 w-6 h-6 text-gray-500" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+    <x-sidebar.link
+        href="{{ route('exit-guides.index') }}"
+        :isActive="request()->routeIs('exit-guides.index')"
+    >
+        <x-slot name="icon">
+            <x-icons.cube-off class="flex-shrink-0 w-6 h-6 text-gray-500" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
 </x-perfect-scrollbar>

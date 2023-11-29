@@ -9,6 +9,7 @@ use App\Livewire\Product\Show as ProductShow;
 use App\Livewire\Product\Index as ProductIndex;
 use App\Livewire\Category\Show as CategoryShow;
 use App\Livewire\Warehouse\Show as WarehouseShow;
+use App\Livewire\ExitGuide\Index as ExitGuideIndex;
 use App\Livewire\Dashboard\Index as DashboardIndex;
 use App\Livewire\EntryGuide\Index as EntryGuideIndex;
 use App\Livewire\EntryGuide\Create as EntryGuideCreate;
@@ -41,6 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('entry-guides', EntryGuideIndex::class)->name('entry-guides.index');
     Route::get('entry-guides/create', EntryGuideCreate::class)->name('entry-guides.create');
+
+    Route::get('exit-guides', ExitGuideIndex::class)->name('exit-guides.index');
 
     // Api Perú
     Route::get('api/dni/{dni}', [ApiPeru::class, 'getDni'])->name('dni.get');

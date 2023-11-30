@@ -27,7 +27,7 @@
                 class="w-6 h-6"
             />
         </x-button>
-        <img class="w-[1.8vw] h-[1.8vw] rounded-full" src="https://cdn.discordapp.com/attachments/920362745231192114/1152767754303189052/365437934_223379340699400_3616346069001445058_n.jpeg" />
+        <img class="w-[1.8vw] h-[1.8vw] rounded-full" src={{ Auth::user()->photo_uri }} />
 
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">

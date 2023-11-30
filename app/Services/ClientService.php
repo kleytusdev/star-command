@@ -41,9 +41,6 @@ class ClientService
 
   private function createOrUpdateBusinessClient(array $clientData)
   {
-    $provinceId = Province::where('name', $clientData['province'])->value('id');
-    $districtId = District::where('province_id', $provinceId)->where('name', $clientData['district'])->value('id');
-
     $business = Business::firstOrCreate(
       ['ruc' => $clientData['ruc']],
       [
@@ -59,7 +56,6 @@ class ClientService
         'retention_agent' => $clientData['retention_agent'],
         'ubigeous' => json_encode($clientData['ubigeous']),
         'annexes' => json_encode($clientData['annexes']),
-        'district_id' => $districtId,
       ]
     );
 

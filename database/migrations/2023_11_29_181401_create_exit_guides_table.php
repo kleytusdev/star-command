@@ -6,14 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('exit_guides', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
+            $table->integer('current_stock');
+            $table->integer('prev_stock');
+            $table->integer('quantity');
+            $table->decimal('total', 9, 2);
+            $table->foreignId('sale_id')->constrained('sales');
+            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

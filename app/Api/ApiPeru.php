@@ -21,14 +21,10 @@ class ApiPeru extends Controller
 
   public function getDni($dni)
   {
-    $person = Person::with('district.province.region')->where('document_number', $dni)->first();
+    $person = Person::where('document_number', $dni)->first();
 
     if ($person)
     {
-      $regionName = $person->district->province->region->name ?? null;
-      $provinceName = $person->district->province->name ?? null;
-      $districtName = $person->district->name ?? null;
-
       return (object) [
         'document_type' => $person->document_type,
         'document_number' => $person->document_number,
@@ -37,9 +33,6 @@ class ApiPeru extends Controller
         'maternal_surname' => $person->maternal_surname,
         'phone_number' => $person->phone_number,
         'full_name' => $person->full_name,
-        'region' =>  $regionName,
-        'province' =>  $provinceName,
-        'district' =>  $districtName,
         'district_id' => $person->district_id,
       ];
     }
@@ -55,13 +48,9 @@ class ApiPeru extends Controller
 
   public function getRuc($ruc)
   {
-    $business = Business::with('district.province.region')->where('ruc', $ruc)->first();
+    $business = Business::where('ruc', $ruc)->first();
 
     if ($business) {
-      $regionName = $business->district->province->region->name ?? null;
-      $provinceName = $business->district->province->name ?? null;
-      $districtName = $business->district->name ?? null;
-
       return (object) [
         'ruc' => $business->ruc,
         'reason_social' => $business->reason_social,
@@ -69,9 +58,6 @@ class ApiPeru extends Controller
         'address' => $business->address,
         'status' => $business->status,
         'condition' => $business->condition,
-        'region' =>  $regionName,
-        'province' =>  $provinceName,
-        'district' =>  $districtName,
         'ubigeous_sunat' => $business->ubigeous_sunat,
         'retention_agent' => $business->retention_agent,
         'ubigeous' => $business->ubigeous,

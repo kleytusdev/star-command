@@ -23,7 +23,6 @@
     @vite(['resources/css/app.css'])
     @vite(['resources/js/app.js'])
     {{-- @notifyCss --}}
-    @livewireScripts
     @notifyJs
 </head>
 
@@ -45,7 +44,6 @@
             </div>
         </div>
     </div>
-    @yield('javascript')
     @include('notify::components.notify')
 </body>
 </html>

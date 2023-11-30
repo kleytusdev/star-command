@@ -11,6 +11,7 @@ use App\Services\ClientService;
 use App\Enums\ProductStatusEnum;
 use Illuminate\Support\Facades\DB;
 use App\Enums\SalePaymentMethodEnum;
+use App\Models\ExitGuide;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Enum;
 
@@ -168,6 +169,17 @@ class Create extends Component
                     'total' => $quantity * $product['price'],
                     'sale_id' => $sale->id,
                     'product_id' => $product['id'],
+                ]);
+
+                ExitGuide::create([
+                    'status' => $product[''],
+                    'current_stock' => $product[''],
+                    'prev_stock' => $product[''],
+                    'quantity' => $product[''],
+                    'total' => $product[''],
+                    'sale_id' => $product[''],
+                    'product_id' => $product[''],
+                    'created_by' => $product[''],
                 ]);
 
                 $product = Product::findOrFail($product['id']);

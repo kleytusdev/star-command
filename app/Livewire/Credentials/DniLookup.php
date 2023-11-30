@@ -35,7 +35,6 @@ class DniLookup extends Component
         try {
             if ($this->dni && preg_match('/^\d{8}$/', $this->dni)) {
                 $response = $apiPeru->getDni($this->dni);
-                dd($response);
                 if ($response) {
                     $this->dniData = $response;
                     $this->dispatch('dniDataObtained', $response);

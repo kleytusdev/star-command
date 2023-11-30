@@ -60,8 +60,8 @@
                     <div class="flex flex-[0.5] flex-row items-end justify-between">
                         <div class="flex-col flex gap-1 justify-between">
                             <p class="text-accent font-work">Empleado con mas ventas</p>
-                            <p class="font-bold">{{ $subuserWithMoreSales->name }}</p>
-                            <p class="font-bold">{{ $subuserWithMoreSales->totalSales }}</p>
+                            <p class="font-bold">{{ $subuserWithMoreSales->name ?? 'Sin registros' }}</p>
+                            <p class="font-bold">S/ {{ $subuserWithMoreSales->totalSales ?? 0 }}</p>
                         </div>
                         <div class="flex flex-row items-center gap-2">
                             <x-icons.calendar-stats class="w-6 h-6 text-primary" aria-hidden="true" />

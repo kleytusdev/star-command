@@ -171,23 +171,20 @@ class Create extends Component
                     'product_id' => $product['id'],
                 ]);
 
-                ExitGuide::create([
-                    'status' => $product[''],
-                    'current_stock' => $product[''],
-                    'prev_stock' => $product[''],
-                    'quantity' => $product[''],
-                    'total' => $product[''],
-                    'sale_id' => $product[''],
-                    'product_id' => $product[''],
-                    'created_by' => $product[''],
-                ]);
-
                 $product = Product::findOrFail($product['id']);
-                $newStock = $product->stock - $quantity;
-                if ($newStock === 0) {
-                    $product->update(['status' => ProductStatusEnum::SOLD_OUT]);
-                }
-                $product->update(['stock' => $newStock]);
+                $product->decrement('stock', $quantity);
+                $product->stock === 0 && $product->update(['status' => ProductStatusEnum::SOLD_OUT]);
+
+                ExitGuide::create([
+                    'status' => $product->status,
+                    'prev_stock' => $product->stock + $quantity,
+                    'current_stock' => $product->stock,
+                    'quantity' => $quantity,
+                    'total' => $this->getTotal(),
+                    'sale_id' => $sale->id,
+                    'product_id' => $product['id'],
+                    'created_by' => Auth::id(),
+                ]);
             }
         });
 
@@ -198,8 +195,7 @@ class Create extends Component
     {
         $total = 0;
 
-        foreach ($this->products as $product)
-        {
+        foreach ($this->products as $product) {
             $total += $product['price'] * $product['quantity']; // Acumula el valor en $total
         }
 

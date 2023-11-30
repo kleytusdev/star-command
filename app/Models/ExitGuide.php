@@ -29,8 +29,8 @@ class ExitGuide extends Model
 
     protected $fillable = [
         'status',
-        'current_stock',
         'prev_stock',
+        'current_stock',
         'quantity',
         'total',
         'sale_id',

@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('exit_guides', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->integer('current_stock');
             $table->integer('prev_stock');
+            $table->integer('current_stock');
             $table->integer('quantity');
             $table->decimal('total', 9, 2);
             $table->foreignId('sale_id')->constrained('sales');

@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $user = User::create([
             'email' => 'test@gmail.com',
-            'photo_uri' => null,
+            'photo_uri' => 'https://i.pinimg.com/originals/2e/e6/4c/2ee64c1f8e4358d928d265f5b8389a35.gif',
             'email_verified_at' => now(),
             'password' => '12341234',
             'remember_token' => Str::random(10),

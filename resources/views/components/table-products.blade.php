@@ -11,7 +11,6 @@
             <th>Stock</th>
             <th>Código QR</th>
             <th>Estado</th>
-            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -39,12 +38,6 @@
                             <div class="h-2.5 w-2.5 rounded-full bg-p-red mr-2"></div> {{ $product->status }}
                         @endif
                     </div>
-                </td>
-                <td>
-                    <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                        Editar
-                    </a>
                 </td>
             </tr>
         @endforeach

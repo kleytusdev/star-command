@@ -38,7 +38,7 @@ class Store extends Component
             $customVisionResponse = $this->customVision();
 
             // Inicializar una variable para almacenar el tagName del mayor probability
-            $highestProbability = 0.75; // Puedes ajustar este valor según tus necesidades
+            $highestProbability = 0.75;
 
             // Iterar sobre cada predicción
             $foundCategory = false;

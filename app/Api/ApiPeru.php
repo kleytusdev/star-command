@@ -12,7 +12,7 @@ class ApiPeru extends Controller
 {
   protected $adapter;
   private static $url = "https://apiperu.dev/api/";
-  private static $token = "f09194eedcacb5d304cbbc221c30b6c4cfce33af2f20e49081eed0cfa2a1448f";
+  private static $token = "";
 
   public function __construct(ApiResponseAdapter $adapter)
   {
